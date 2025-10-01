@@ -1,0 +1,71 @@
+{
+  "slug": "inception",
+  "title": "Inception - Le rêve dans le rêve",
+  "category": "movie",
+  "description": "Testez vos connaissances sur le chef-d'œuvre de Christopher Nolan. Attention aux spoilers légers !",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "question": "Quel acteur joue le rôle de Dom Cobb, l'extracteur principal ?",
+      "options": ["Leonardo DiCaprio", "Tom Hardy", "Joseph Gordon-Levitt", "Matt Damon"],
+      "correctAnswer": 0,
+      "explanation": "Leonardo DiCaprio incarne Dom Cobb, le maître extracteur qui pénètre dans les rêves."
+    },
+    {
+      "question": "Quel objet Cobb utilise-t-il comme totem pour distinguer rêve et réalité ?",
+      "options": ["Une pièce de monnaie", "Une toupie", "Un dé", "Une bague"],
+      "correctAnswer": 1,
+      "explanation": "La toupie appartient à sa femme Mal. Si elle tombe, c'est la réalité ; si elle tourne indéfiniment, c'est un rêve."
+    },
+    {
+      "question": "Quel est le prénom de l'architecte recrutée par Cobb pour créer les rêves ?",
+      "options": ["Emma", "Ariadne", "Sophie", "Claire"],
+      "correctAnswer": 1,
+      "explanation": "Ariadne (Ellen Page) est l'architecte brillante qui apprend à construire les labyrinthes oniriques."
+    },
+    {
+      "question": "Dans combien de niveaux de rêves l'équipe descend-elle au maximum ?",
+      "options": ["2", "3", "4", "5"],
+      "correctAnswer": 2,
+      "explanation": "L'équipe descend jusqu'à 4 niveaux : le van, l'hôtel, la forteresse de neige, et les limbes."
+    },
+    {
+      "question": "Quel acteur joue Eames, le falsificateur de l'équipe ?",
+      "options": ["Tom Hardy", "Cillian Murphy", "Michael Caine", "Ken Watanabe"],
+      "correctAnswer": 0,
+      "explanation": "Tom Hardy joue Eames, capable de changer d'apparence dans les rêves."
+    },
+    {
+      "question": "Quel est le vrai métier de Robert Fischer, la cible de l'inception ?",
+      "options": ["Banquier", "Héritier d'un empire industriel", "Politicien", "Médecin"],
+      "correctAnswer": 1,
+      "explanation": "Fischer est l'héritier de l'empire énergétique de son père Maurice Fischer."
+    },
+    {
+      "question": "Quelle chanson est utilisée comme signal pour synchroniser les kicks ?",
+      "options": ["Time - Hans Zimmer", "Non, je ne regrette rien - Édith Piaf", "Dream Is Collapsing - Hans Zimmer", "Mombasa - Hans Zimmer"],
+      "correctAnswer": 1,
+      "explanation": "La chanson d'Édith Piaf est ralentie dans les rêves pour synchroniser les réveils."
+    },
+    {
+      "question": "Comment se nomme le phénomène où le temps passe plus lentement dans les rêves ?",
+      "options": ["Dilatation temporelle", "Effet placebo", "Ralentissement onirique", "Paradoxe de Penrose"],
+      "correctAnswer": 0,
+      "explanation": "Plus on descend dans les niveaux de rêve, plus le temps est dilaté."
+    },
+    {
+      "question": "Où se déroule l'action dans le premier niveau de rêve (le van) ?",
+      "options": ["Paris", "New York", "Los Angeles", "Tokyo"],
+      "correctAnswer": 2,
+      "explanation": "Le premier niveau est une poursuite en van dans les rues sous la pluie de Los Angeles."
+    },
+    {
+      "question": "Que se passe-t-il à la fin du film avec la toupie ?",
+      "options": ["Elle tombe", "Elle tourne indéfiniment", "Elle vacille", "Le film se termine avant qu'on le sache"],
+      "correctAnswer": 3,
+      "explanation": "Le film coupe avant que la toupie ne tombe ou ne tourne, laissant le doute. C'est l'ambiguïté voulue par Nolan."
+    }
+  ]
+}
+
+

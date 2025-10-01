@@ -1,0 +1,71 @@
+{
+  "slug": "zelda-botw",
+  "title": "The Legend of Zelda: Breath of the Wild",
+  "category": "game",
+  "description": "Testez vos connaissances sur cette révolution du jeu d'aventure open-world. Pas de spoilers majeurs.",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "question": "Sur quelle console Breath of the Wild est-il sorti en premier ?",
+      "options": ["Wii U uniquement", "Nintendo Switch uniquement", "Wii U et Switch simultanément", "3DS"],
+      "correctAnswer": 2,
+      "explanation": "BotW est sorti le même jour sur Wii U et Switch (3 mars 2017), faisant la transition entre les deux consoles."
+    },
+    {
+      "question": "Comment s'appelle la tablette magique que Link utilise dans le jeu ?",
+      "options": ["Module Sheikah", "Ardoise Sheikah", "Tablette Hylienne", "Pad Zelda"],
+      "correctAnswer": 1,
+      "explanation": "L'Ardoise Sheikah (Sheikah Slate) est l'outil multifonction donné à Link au début de l'aventure."
+    },
+    {
+      "question": "Combien y a-t-il de sanctuaires à découvrir dans le jeu ?",
+      "options": ["100", "120", "150", "200"],
+      "correctAnswer": 1,
+      "explanation": "Il y a 120 sanctuaires dispersés à travers Hyrule, offrant des énigmes et des récompenses."
+    },
+    {
+      "question": "Quel est le nom de la créature mécanique géante pilotée par Mipha ?",
+      "options": ["Vah Ruta", "Vah Rudania", "Vah Naboris", "Vah Medoh"],
+      "correctAnswer": 0,
+      "explanation": "Vah Ruta est la créature divine en forme d'éléphant associée à Mipha et à la région Zora."
+    },
+    {
+      "question": "Combien de cœurs Link possède-t-il au début du jeu ?",
+      "options": ["3", "4", "5", "6"],
+      "correctAnswer": 0,
+      "explanation": "Link commence avec seulement 3 cœurs, rendant les premiers combats assez périlleux."
+    },
+    {
+      "question": "Quel matériau est nécessaire pour améliorer l'armure au maximum ?",
+      "options": ["Étoiles filantes", "Fragments d'étoile", "Cristaux Lumineux", "Gemmes divines"],
+      "correctAnswer": 1,
+      "explanation": "Les Fragments d'étoile, rares et précieux, sont requis pour les dernières améliorations d'armure."
+    },
+    {
+      "question": "Qui est le principal antagoniste du jeu ?",
+      "options": ["Ganon", "Ganondorf", "Calamity Ganon", "Dark Link"],
+      "correctAnswer": 2,
+      "explanation": "Calamity Ganon (Fléau Ganon en français) est la forme corrompue de Ganon dans BotW."
+    },
+    {
+      "question": "Quel est le nom du village des Piaf ?",
+      "options": ["Village Piaf", "Célestia", "Cumulis", "Éolia"],
+      "correctAnswer": 2,
+      "explanation": "Cumulis est le village des Piaf, situé en hauteur et accessible après résolution d'une quête."
+    },
+    {
+      "question": "Combien d'heures environ faut-il pour finir l'histoire principale en speedrun ?",
+      "options": ["30 minutes", "2 heures", "10 heures", "50 heures"],
+      "correctAnswer": 0,
+      "explanation": "Les speedrunners peuvent battre Ganon en moins de 30 minutes grâce à des glitches, mais le jeu est conçu pour 50h+."
+    },
+    {
+      "question": "Quel nom porte le DLC qui ajoute la Moto de Link ?",
+      "options": ["Le Prodige", "Les Épreuves légendaires", "L'Ode aux Prodiges", "Champions' Ballad"],
+      "correctAnswer": 2,
+      "explanation": "L'Ode aux Prodiges (The Champion's Ballad) est le second DLC qui récompense avec la Moto."
+    }
+  ]
+}
+
+

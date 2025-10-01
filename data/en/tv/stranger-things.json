@@ -1,0 +1,71 @@
+{
+  "slug": "stranger-things",
+  "title": "Stranger Things - The Upside Down",
+  "category": "tv",
+  "description": "Test your knowledge about Hawkins and its supernatural mysteries. Moderate spoilers included.",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "question": "In which fictional town does Stranger Things take place?",
+      "options": ["Hawkins, Indiana", "Riverside, Indiana", "Montauk, New York", "Salem, Massachusetts"],
+      "correctAnswer": 0,
+      "explanation": "Hawkins, Indiana is the small town where supernatural events unfold throughout the series."
+    },
+    {
+      "question": "What is Eleven's favorite food?",
+      "options": ["Burgers", "Eggos", "Pizza", "Ice cream"],
+      "correctAnswer": 1,
+      "explanation": "Eleven loves Eggo waffles, which become an iconic element of her character."
+    },
+    {
+      "question": "What game do the kids frequently play?",
+      "options": ["Magic: The Gathering", "Dungeons & Dragons", "Monopoly", "Risk"],
+      "correctAnswer": 1,
+      "explanation": "Dungeons & Dragons is central to the group's friendship and often mirrors the plot."
+    },
+    {
+      "question": "What year does Season 1 take place?",
+      "options": ["1981", "1983", "1985", "1987"],
+      "correctAnswer": 1,
+      "explanation": "Season 1 is set in November 1983, during the height of the Cold War era."
+    },
+    {
+      "question": "Who plays Chief Jim Hopper?",
+      "options": ["Winona Ryder", "David Harbour", "Matthew Modine", "Sean Astin"],
+      "correctAnswer": 1,
+      "explanation": "David Harbour portrays the troubled but heroic police chief Jim Hopper."
+    },
+    {
+      "question": "What is the parallel dimension called?",
+      "options": ["The Shadow Realm", "The Dark Place", "The Upside Down", "The Void"],
+      "correctAnswer": 2,
+      "explanation": "The Upside Down is the dark, decaying parallel dimension that threatens Hawkins."
+    },
+    {
+      "question": "Which company runs the secret lab?",
+      "options": ["Umbrella Corporation", "Aperture Science", "Hawkins Lab", "Black Mesa"],
+      "correctAnswer": 2,
+      "explanation": "Hawkins National Laboratory is the secretive government facility conducting experiments."
+    },
+    {
+      "question": "What is the name of the monster in Season 1?",
+      "options": ["The Demodog", "The Mind Flayer", "The Demogorgon", "The Shadow Monster"],
+      "correctAnswer": 2,
+      "explanation": "The Demogorgon, named after a D&D creature, is the predatory monster from the Upside Down."
+    },
+    {
+      "question": "Which actress plays Eleven?",
+      "options": ["Millie Bobby Brown", "Sadie Sink", "Natalia Dyer", "Maya Hawke"],
+      "correctAnswer": 0,
+      "explanation": "Millie Bobby Brown's breakout role as Eleven made her a global star."
+    },
+    {
+      "question": "What mall opens in Season 3?",
+      "options": ["Hawkins Plaza", "Starcourt Mall", "The Galleria", "Riverside Mall"],
+      "correctAnswer": 1,
+      "explanation": "Starcourt Mall becomes a major setting in Season 3, with a secret Russian base beneath it."
+    }
+  ]
+}
+
+

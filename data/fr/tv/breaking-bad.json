@@ -1,0 +1,71 @@
+{
+  "slug": "breaking-bad",
+  "title": "Breaking Bad - L'empire chimique",
+  "category": "tv",
+  "description": "Prouvez que vous connaissez l'histoire de Walter White. Quelques spoilers modérés inclus.",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "question": "Quel est le vrai prénom de Heisenberg ?",
+      "options": ["William", "Walter", "Wayne", "Warren"],
+      "correctAnswer": 1,
+      "explanation": "Walter White est le nom complet du professeur de chimie devenu fabricant de méthamphétamine."
+    },
+    {
+      "question": "Dans quelle ville se déroule principalement la série ?",
+      "options": ["Los Angeles", "Phoenix", "Albuquerque", "Las Vegas"],
+      "correctAnswer": 2,
+      "explanation": "Breaking Bad se déroule à Albuquerque, Nouveau-Mexique, reconnaissable à ses paysages désertiques."
+    },
+    {
+      "question": "Quel acteur incarne Jesse Pinkman, le partenaire de Walter ?",
+      "options": ["Aaron Paul", "Aaron Taylor-Johnson", "Andrew Garfield", "Adam Driver"],
+      "correctAnswer": 0,
+      "explanation": "Aaron Paul joue Jesse Pinkman, l'ancien élève de Walter devenu son partenaire criminel."
+    },
+    {
+      "question": "Quelle est la profession de Walter avant de devenir cuisinier de meth ?",
+      "options": ["Médecin", "Ingénieur", "Professeur de chimie", "Pharmacien"],
+      "correctAnswer": 2,
+      "explanation": "Walter enseigne la chimie au lycée, ce qui lui donne l'expertise pour la méthamphétamine."
+    },
+    {
+      "question": "Comment s'appelle le beau-frère de Walter, agent de la DEA ?",
+      "options": ["Steve", "Hank", "Mike", "Saul"],
+      "correctAnswer": 1,
+      "explanation": "Hank Schrader est l'agent de la DEA qui traque sans le savoir son propre beau-frère."
+    },
+    {
+      "question": "Quel restaurant de fast-food est utilisé comme façade pour le laboratoire ?",
+      "options": ["Los Pollos Hermanos", "Taco Cabeza", "Burger King", "El Pollo Loco"],
+      "correctAnswer": 0,
+      "explanation": "Los Pollos Hermanos, la chaîne de Gus Fring, cache un laboratoire de meth high-tech."
+    },
+    {
+      "question": "Quel nom d'emprunt Walter utilise-t-il dans le milieu criminel ?",
+      "options": ["Einstein", "Heisenberg", "Schrödinger", "Curie"],
+      "correctAnswer": 1,
+      "explanation": "Walter choisit Heisenberg en référence au physicien Werner Heisenberg et son principe d'incertitude."
+    },
+    {
+      "question": "Combien de saisons compte la série Breaking Bad ?",
+      "options": ["4", "5", "6", "7"],
+      "correctAnswer": 1,
+      "explanation": "Breaking Bad compte 5 saisons (2008-2013), avec la dernière divisée en deux parties."
+    },
+    {
+      "question": "Qui est le personnage principal du spin-off 'Better Call Saul' ?",
+      "options": ["Mike Ehrmantraut", "Gustavo Fring", "Saul Goodman", "Tuco Salamanca"],
+      "correctAnswer": 2,
+      "explanation": "Better Call Saul raconte l'histoire de Jimmy McGill avant qu'il ne devienne l'avocat Saul Goodman."
+    },
+    {
+      "question": "De quelle maladie Walter souffre-t-il au début de la série ?",
+      "options": ["Leucémie", "Cancer du poumon", "Tumeur au cerveau", "Cancer du pancréas"],
+      "correctAnswer": 1,
+      "explanation": "Le diagnostic de cancer du poumon pousse Walter à cuisiner de la meth pour assurer l'avenir de sa famille."
+    }
+  ]
+}
+
+

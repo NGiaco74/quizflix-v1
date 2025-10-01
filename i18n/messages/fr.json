@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "title": "Quiz Ciné, Séries & Jeux — V1",
+    "description": "Joue à nos quizz rapides sans spoilers majeurs. Partage ton score !",
+    "ogTitle": "Quiz Ciné, Séries & Jeux",
+    "ogDescription": "Teste tes connaissances en films, séries et jeux vidéo"
+  },
+  "header": {
+    "logo": "Quizflix",
+    "nav": {
+      "home": "Accueil",
+      "games": "Jeux Vidéo"
+    }
+  },
+  "footer": {
+    "allRights": "© 2025 Quizflix. Tous droits réservés.",
+    "privacy": "Confidentialité",
+    "cookies": "Cookies"
+  },
+  "home": {
+    "title": "Choisis ton quiz",
+    "subtitle": "Teste tes connaissances en films, séries et jeux vidéo",
+    "categories": {
+      "all": "Tous",
+      "movie": "Films",
+      "tv": "Séries",
+      "game": "Jeux Vidéo"
+    }
+  },
+  "quiz": {
+    "question": "Question {current} sur {total}",
+    "submit": "Valider",
+    "next": "Question suivante",
+    "finish": "Voir mon score",
+    "explanation": "Explication"
+  },
+  "result": {
+    "title": "Résultat",
+    "score": "Ton score : {score} / {total}",
+    "excellent": "Excellent !",
+    "good": "Bien joué !",
+    "canDoBetter": "Tu peux mieux faire !",
+    "medal": {
+      "gold": "🥇 Médaille d'or",
+      "silver": "🥈 Médaille d'argent",
+      "bronze": "🥉 Médaille de bronze"
+    },
+    "share": "Partager mon score",
+    "replay": "Rejouer",
+    "backHome": "Retour à l'accueil"
+  },
+  "gamesPage": {
+    "title": "Quiz Jeux Vidéo",
+    "description": "Teste tes connaissances sur les jeux vidéo cultes et récents"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "content": "Cette page est une démo V1. Aucune donnée personnelle n'est collectée. Les préférences de langue sont stockées dans un cookie local."
+    },
+    "cookies": {
+      "title": "Politique des cookies",
+      "content": "Ce site utilise uniquement un cookie technique pour mémoriser votre préférence de langue (FR/EN). Aucun cookie publicitaire ou de suivi."
+    }
+  },
+  "share": {
+    "text": "J'ai obtenu {score}/{total} sur le quiz {title} !",
+    "copyLink": "Copier le lien",
+    "copied": "Lien copié !"
+  },
+  "category": {
+    "movie": "Film",
+    "tv": "Série",
+    "game": "Jeu"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "notFound": "Page non trouvée",
+    "start": "Commencer le quiz"
+  }
+}
+
+

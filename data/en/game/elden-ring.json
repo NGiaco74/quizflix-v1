@@ -1,0 +1,71 @@
+{
+  "slug": "elden-ring",
+  "title": "Elden Ring - Lands Between",
+  "category": "game",
+  "description": "Test your knowledge about FromSoftware's open-world masterpiece. No major story spoilers.",
+  "difficulty": "hard",
+  "questions": [
+    {
+      "question": "Who collaborated with FromSoftware to create Elden Ring's lore?",
+      "options": ["J.R.R. Tolkien", "George R.R. Martin", "Brandon Sanderson", "Patrick Rothfuss"],
+      "correctAnswer": 1,
+      "explanation": "George R.R. Martin, author of Game of Thrones, helped craft the world's mythology and backstory."
+    },
+    {
+      "question": "What is the player character called in Elden Ring?",
+      "options": ["The Chosen One", "The Ashen One", "The Tarnished", "The Hunter"],
+      "correctAnswer": 2,
+      "explanation": "The player is a Tarnished, one of the exiled who return to claim the Elden Ring."
+    },
+    {
+      "question": "What is the name of the grace checkpoints in the game?",
+      "options": ["Bonfires", "Sites of Grace", "Lanterns", "Shrines"],
+      "correctAnswer": 1,
+      "explanation": "Sites of Grace replace Dark Souls' bonfires as rest points and fast travel locations."
+    },
+    {
+      "question": "What is the spectral horse's name?",
+      "options": ["Agro", "Roach", "Torrent", "Epona"],
+      "correctAnswer": 2,
+      "explanation": "Torrent is your faithful spectral steed companion throughout the Lands Between."
+    },
+    {
+      "question": "Who is the demigod boss of Stormveil Castle?",
+      "options": ["Radahn", "Godrick the Grafted", "Malenia", "Rykard"],
+      "correctAnswer": 1,
+      "explanation": "Godrick the Grafted is the first major demigod boss, known for grafting limbs onto himself."
+    },
+    {
+      "question": "What year was Elden Ring released?",
+      "options": ["2020", "2021", "2022", "2023"],
+      "correctAnswer": 2,
+      "explanation": "Elden Ring launched in February 2022 to critical acclaim and commercial success."
+    },
+    {
+      "question": "What is the maximum player level?",
+      "options": ["99", "150", "713", "999"],
+      "correctAnswer": 2,
+      "explanation": "The maximum level is 713, achieved by maxing all eight stats to 99."
+    },
+    {
+      "question": "Which demigod is known as 'The Blade of Miquella'?",
+      "options": ["Radahn", "Malenia", "Godrick", "Morgott"],
+      "correctAnswer": 1,
+      "explanation": "Malenia, Blade of Miquella, is one of the hardest bosses and has never known defeat."
+    },
+    {
+      "question": "What are the spirit summons called that assist players?",
+      "options": ["Phantoms", "Ashes", "Echoes", "Specters"],
+      "correctAnswer": 1,
+      "explanation": "Spirit Ashes (or Ashes) can be summoned using FP to aid in combat."
+    },
+    {
+      "question": "What is the name of the DLC expansion?",
+      "options": ["Shattered Realm", "Shadow of the Erdtree", "Land of Shadows", "The Fractured Ring"],
+      "correctAnswer": 1,
+      "explanation": "Shadow of the Erdtree is the major DLC expansion announced for Elden Ring."
+    }
+  ]
+}
+
+

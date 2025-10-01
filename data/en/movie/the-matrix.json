@@ -1,0 +1,71 @@
+{
+  "slug": "the-matrix",
+  "title": "The Matrix - Reality or Simulation?",
+  "category": "movie",
+  "description": "Test your knowledge about the Wachowskis' groundbreaking sci-fi masterpiece. Minor spoilers ahead!",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "question": "What is Neo's real name in the Matrix?",
+      "options": ["Thomas Anderson", "Thomas Johnson", "John Anderson", "Andrew Thomas"],
+      "correctAnswer": 0,
+      "explanation": "Thomas A. Anderson is Neo's name in the simulated reality before he discovers the truth."
+    },
+    {
+      "question": "What color pill does Neo take to leave the Matrix?",
+      "options": ["Blue pill", "Red pill", "Green pill", "Purple pill"],
+      "correctAnswer": 1,
+      "explanation": "Neo takes the red pill to see reality, while the blue pill would return him to ignorance."
+    },
+    {
+      "question": "Who is the captain of the Nebuchadnezzar?",
+      "options": ["Neo", "Morpheus", "Trinity", "Cypher"],
+      "correctAnswer": 1,
+      "explanation": "Morpheus captains the hovercraft Nebuchadnezzar and leads the crew against the machines."
+    },
+    {
+      "question": "What is the name of the traitor who betrays the crew?",
+      "options": ["Tank", "Dozer", "Cypher", "Mouse"],
+      "correctAnswer": 2,
+      "explanation": "Cypher betrays the crew to Agent Smith in exchange for being reinserted into the Matrix."
+    },
+    {
+      "question": "What martial art style is primarily featured in the film?",
+      "options": ["Karate", "Kung Fu", "Taekwondo", "Jiu-Jitsu"],
+      "correctAnswer": 1,
+      "explanation": "Kung Fu is the primary martial art style, choreographed by Yuen Woo-ping."
+    },
+    {
+      "question": "What year was The Matrix released?",
+      "options": ["1997", "1998", "1999", "2000"],
+      "correctAnswer": 2,
+      "explanation": "The Matrix premiered in March 1999 and became an instant cultural phenomenon."
+    },
+    {
+      "question": "Which actress plays Trinity?",
+      "options": ["Carrie-Anne Moss", "Monica Bellucci", "Jada Pinkett Smith", "Gloria Foster"],
+      "correctAnswer": 0,
+      "explanation": "Carrie-Anne Moss portrays Trinity, the skilled hacker and Neo's ally."
+    },
+    {
+      "question": "What do humans represent to the machines in the Matrix?",
+      "options": ["Threats", "Batteries", "Slaves", "Pets"],
+      "correctAnswer": 1,
+      "explanation": "Humans are used as batteries to power the machines after blocking out the sun."
+    },
+    {
+      "question": "What is the name of the last human city?",
+      "options": ["New Earth", "Zion", "Haven", "Eden"],
+      "correctAnswer": 1,
+      "explanation": "Zion is the underground city where the last free humans survive."
+    },
+    {
+      "question": "What ability does Neo develop by the end of the film?",
+      "options": ["Telepathy", "Time travel", "Stopping bullets", "Invisibility"],
+      "correctAnswer": 2,
+      "explanation": "Neo realizes he is The One and can manipulate the Matrix, including stopping bullets mid-air."
+    }
+  ]
+}
+
+

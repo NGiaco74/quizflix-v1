@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "title": "Movies, Series & Games Quizzes — V1",
+    "description": "Play fast quizzes with no major spoilers. Share your score!",
+    "ogTitle": "Movies, Series & Games Quizzes",
+    "ogDescription": "Test your knowledge about movies, TV shows and video games"
+  },
+  "header": {
+    "logo": "Quizflix",
+    "nav": {
+      "home": "Home",
+      "games": "Video Games"
+    }
+  },
+  "footer": {
+    "allRights": "© 2025 Quizflix. All rights reserved.",
+    "privacy": "Privacy",
+    "cookies": "Cookies"
+  },
+  "home": {
+    "title": "Choose your quiz",
+    "subtitle": "Test your knowledge about movies, TV shows and video games",
+    "categories": {
+      "all": "All",
+      "movie": "Movies",
+      "tv": "TV Shows",
+      "game": "Video Games"
+    }
+  },
+  "quiz": {
+    "question": "Question {current} of {total}",
+    "submit": "Submit",
+    "next": "Next question",
+    "finish": "See my score",
+    "explanation": "Explanation"
+  },
+  "result": {
+    "title": "Result",
+    "score": "Your score: {score} / {total}",
+    "excellent": "Excellent!",
+    "good": "Well done!",
+    "canDoBetter": "You can do better!",
+    "medal": {
+      "gold": "🥇 Gold medal",
+      "silver": "🥈 Silver medal",
+      "bronze": "🥉 Bronze medal"
+    },
+    "share": "Share my score",
+    "replay": "Play again",
+    "backHome": "Back to home"
+  },
+  "gamesPage": {
+    "title": "Video Games Quizzes",
+    "description": "Test your knowledge about classic and recent video games"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "content": "This page is a V1 demo. No personal data is collected. Language preferences are stored in a local cookie."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "content": "This site uses only a technical cookie to remember your language preference (FR/EN). No advertising or tracking cookies."
+    }
+  },
+  "share": {
+    "text": "I scored {score}/{total} on the {title} quiz!",
+    "copyLink": "Copy link",
+    "copied": "Link copied!"
+  },
+  "category": {
+    "movie": "Movie",
+    "tv": "TV Show",
+    "game": "Game"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Page not found",
+    "start": "Start quiz"
+  }
+}
+
+
