@@ -9,7 +9,7 @@
   }
 
   * {
-    @apply border-border;
+    box-sizing: border-box;
   }
 
   body {
@@ -48,7 +48,7 @@
            hover:bg-white/20 hover:border-secondary
            transition-all duration-200
            focus:outline-none focus:ring-4 focus:ring-secondary/50
-           active:scale-98 min-h-[44px];
+           active:scale-[0.98] min-h-[44px];
   }
 
   .quiz-button.correct {

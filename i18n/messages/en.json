@@ -18,7 +18,7 @@
     "cookies": "Cookies"
   },
   "home": {
-    "title": "Choose your quiz",
+    "title": "Choose your quizz",
     "subtitle": "Test your knowledge about movies, TV shows and video games",
     "categories": {
       "all": "All",
@@ -64,7 +64,7 @@
     }
   },
   "share": {
-    "text": "I scored {score}/{total} on the {title} quiz!",
+    "text": "I scored {score}/{total} on the {title} quizz!",
     "copyLink": "Copy link",
     "copied": "Link copied!"
   },
@@ -77,7 +77,7 @@
     "loading": "Loading...",
     "error": "An error occurred",
     "notFound": "Page not found",
-    "start": "Start quiz"
+    "start": "Start quizz"
   }
 }
 

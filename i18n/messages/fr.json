@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Quiz Ciné, Séries & Jeux — V1",
+    "title": "Quizz Ciné, Séries & Jeux — V1",
     "description": "Joue à nos quizz rapides sans spoilers majeurs. Partage ton score !",
-    "ogTitle": "Quiz Ciné, Séries & Jeux",
+    "ogTitle": "Quizz Ciné, Séries & Jeux",
     "ogDescription": "Teste tes connaissances en films, séries et jeux vidéo"
   },
   "header": {
@@ -18,7 +18,7 @@
     "cookies": "Cookies"
   },
   "home": {
-    "title": "Choisis ton quiz",
+    "title": "Choisis ton quizz",
     "subtitle": "Teste tes connaissances en films, séries et jeux vidéo",
     "categories": {
       "all": "Tous",
@@ -50,7 +50,7 @@
     "backHome": "Retour à l'accueil"
   },
   "gamesPage": {
-    "title": "Quiz Jeux Vidéo",
+    "title": "Quizz Jeux Vidéo",
     "description": "Teste tes connaissances sur les jeux vidéo cultes et récents"
   },
   "legal": {
@@ -64,7 +64,7 @@
     }
   },
   "share": {
-    "text": "J'ai obtenu {score}/{total} sur le quiz {title} !",
+    "text": "J'ai obtenu {score}/{total} sur le quizz {title} !",
     "copyLink": "Copier le lien",
     "copied": "Lien copié !"
   },
@@ -77,7 +77,7 @@
     "loading": "Chargement...",
     "error": "Une erreur s'est produite",
     "notFound": "Page non trouvée",
-    "start": "Commencer le quiz"
+    "start": "Commencer le quizz"
   }
 }
 
