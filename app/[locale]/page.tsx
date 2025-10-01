@@ -20,12 +20,12 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
   const quizzes = getAllQuizzes(locale);
 
   return (
-    <div className="space-y-8">
-      <div className="text-center space-y-4 mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-balance">
+    <div className="space-y-6">
+      <div className="text-center space-y-3 mb-8 px-2">
+        <h1 className="text-2xl md:text-5xl font-bold text-balance break-words">
           {t('title')}
         </h1>
-        <p className="text-xl text-white/70 max-w-2xl mx-auto text-balance">
+        <p className="text-sm md:text-xl text-white/70 max-w-2xl mx-auto text-balance break-words">
           {t('subtitle')}
         </p>
       </div>

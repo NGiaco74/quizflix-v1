@@ -1,0 +1,29 @@
+⚠️ IMPORTANT : Trouver votre Username GitHub
+
+Votre username GitHub apparaît :
+- En haut à droite du site GitHub (après connexion)
+- Dans l'URL de votre profil : https://github.com/VOTRE-USERNAME
+
+Exemples de usernames :
+- n-giacometti
+- john-doe
+- coding-wizard
+
+Une fois trouvé, remplacez VOTRE-USERNAME dans les commandes ci-dessous.
+
+==========================================
+COMMANDES À COPIER (après avoir remplacé)
+==========================================
+
+git remote add origin https://github.com/VOTRE-USERNAME/quizflix-v1.git
+git push -u origin main
+
+==========================================
+EXEMPLE CONCRET :
+==========================================
+
+Si votre username est "n-giacometti" :
+
+git remote add origin https://github.com/n-giacometti/quizflix-v1.git
+git push -u origin main
+

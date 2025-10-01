@@ -10,7 +10,7 @@ export default function Footer({ locale }: FooterProps) {
 
   return (
     <footer className="mt-auto border-t border-white/10 bg-dark/50">
-      <div className="container mx-auto px-4 py-8">
+      <div className="w-full max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col items-center justify-between gap-4 text-sm text-white/60 md:flex-row">
           <p>{t('allRights')}</p>
           <div className="flex gap-6">
