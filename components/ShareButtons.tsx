@@ -22,7 +22,7 @@ export default function ShareButtons({ title, score, total, locale }: ShareButto
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `${title} - Quizflix`,
+          title: `${title} - Quizzflix`,
           text: shareText,
           url: shareUrl,
         });

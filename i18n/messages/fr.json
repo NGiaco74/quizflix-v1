@@ -6,14 +6,14 @@
     "ogDescription": "Teste tes connaissances en films, séries et jeux vidéo"
   },
   "header": {
-    "logo": "Quizflix",
+    "logo": "Quizzflix",
     "nav": {
       "home": "Accueil",
       "games": "Jeux Vidéo"
     }
   },
   "footer": {
-    "allRights": "© 2025 Quizflix. Tous droits réservés.",
+    "allRights": "© 2025 Quizzflix. Tous droits réservés.",
     "privacy": "Confidentialité",
     "cookies": "Cookies"
   },

@@ -6,7 +6,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     
-    const title = searchParams.get('title') || 'Quizflix';
+    const title = searchParams.get('title') || 'Quizzflix';
     const score = searchParams.get('score');
     const total = searchParams.get('total');
 
@@ -42,7 +42,7 @@ export async function GET(request: Request) {
                 marginBottom: 40,
               }}
             >
-              Quizflix
+              Quizzflix
             </div>
             
             <div

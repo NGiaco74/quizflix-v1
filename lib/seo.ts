@@ -33,7 +33,7 @@ export function generateSEO({
       title,
       description,
       url,
-      siteName: 'Quizflix',
+      siteName: 'Quizzflix',
       images: [
         {
           url: ogImageUrl,

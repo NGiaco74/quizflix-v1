@@ -31,7 +31,7 @@ export async function generateMetadata({
   }
 
   return generateSEO({
-    title: `${quiz.title} - Quizflix`,
+    title: `${quiz.title} - Quizzflix`,
     description: quiz.description,
     locale,
     path: `/quiz/${slug}`,
