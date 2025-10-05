@@ -1,0 +1,72 @@
+{
+  "slug": "breaking-bad-debutant",
+  "title": "Breaking Bad - Premiers Pas",
+  "category": "tv",
+  "description": "Découvre l'univers de Breaking Bad avec ce quiz pour débutants. Parfait pour débuter la série !",
+  "difficulty": "easy",
+  "createdAt": "2025-10-02T12:00:00Z",
+  "releaseYear": 2008,
+  "questions": [
+    {
+      "question": "Quel est le nom complet du personnage principal ?",
+      "options": ["Walter White", "William White", "Warren White", "Wesley White"],
+      "correctAnswer": 0,
+      "explanation": "Walter Hartwell White est le nom complet du protagoniste."
+    },
+    {
+      "question": "Quelle substance Walter fabrique-t-il ?",
+      "options": ["Cocaïne", "Héroïne", "Méthamphétamine", "LSD"],
+      "correctAnswer": 2,
+      "explanation": "Walter cuisine de la méthamphétamine cristallisée, la meth bleue."
+    },
+    {
+      "question": "Quel était le métier de Walter avant ?",
+      "options": ["Médecin", "Professeur de chimie", "Pharmacien", "Ingénieur"],
+      "correctAnswer": 1,
+      "explanation": "Walter enseignait la chimie au lycée avant de devenir cuisinier."
+    },
+    {
+      "question": "Combien de saisons compte la série ?",
+      "options": ["4", "5", "6", "7"],
+      "correctAnswer": 1,
+      "explanation": "Breaking Bad compte 5 saisons diffusées entre 2008 et 2013."
+    },
+    {
+      "question": "Dans quelle ville se déroule l'histoire ?",
+      "options": ["Phoenix", "Las Vegas", "Albuquerque", "Santa Fe"],
+      "correctAnswer": 2,
+      "explanation": "L'histoire se passe à Albuquerque, Nouveau-Mexique."
+    },
+    {
+      "question": "Quel acteur incarne Walter White ?",
+      "options": ["Bryan Cranston", "Aaron Paul", "Dean Norris", "Bob Odenkirk"],
+      "correctAnswer": 0,
+      "explanation": "Bryan Cranston a brillamment incarné Walter White et remporté plusieurs Emmy."
+    },
+    {
+      "question": "Quel est le prénom du fils de Walter ?",
+      "options": ["Walter Jr.", "Jesse", "Flynn", "Les deux sont justes"],
+      "correctAnswer": 3,
+      "explanation": "Il s'appelle Walter Jr. mais préfère se faire appeler Flynn."
+    },
+    {
+      "question": "Pourquoi Walter commence-t-il à cuisiner de la meth ?",
+      "options": ["Par vengeance", "Par ennui", "Cancer et argent", "Curiosité"],
+      "correctAnswer": 2,
+      "explanation": "Diagnostiqué d'un cancer, il veut assurer l'avenir financier de sa famille."
+    },
+    {
+      "question": "Quel est le surnom criminel de Walter ?",
+      "options": ["The Cook", "Heisenberg", "Mr. White", "The Chemist"],
+      "correctAnswer": 1,
+      "explanation": "Walter choisit Heisenberg comme nom de code dans le milieu."
+    },
+    {
+      "question": "Sur quelle chaîne la série a-t-elle été diffusée ?",
+      "options": ["HBO", "Netflix", "AMC", "Showtime"],
+      "correctAnswer": 2,
+      "explanation": "Breaking Bad a été créée et diffusée sur AMC."
+    }
+  ]
+}
+

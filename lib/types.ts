@@ -15,6 +15,9 @@ export interface Quiz {
   difficulty: 'easy' | 'medium' | 'hard';
   questions: QuizQuestion[];
   imageUrl?: string;
+  createdAt?: string; // Date de création du quiz (ISO format)
+  releaseYear?: number; // Année de sortie du film/série/jeu
+  popularity?: number; // Score de popularité (1-10)
 }
 
 export interface QuizResult {

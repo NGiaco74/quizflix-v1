@@ -1,0 +1,72 @@
+{
+  "slug": "zelda-botw-expert",
+  "title": "Zelda BotW - Maître d'Hyrule",
+  "category": "game",
+  "description": "Pour les véritables experts de Breath of the Wild. Détails techniques et secrets cachés !",
+  "difficulty": "hard",
+  "createdAt": "2025-10-02T15:00:00Z",
+  "releaseYear": 2017,
+  "questions": [
+    {
+      "question": "Combien de korogus (graines Korogu) peut-on trouver au total ?",
+      "options": ["120", "450", "900", "999"],
+      "correctAnswer": 2,
+      "explanation": "Il y a exactement 900 korogus cachés dans tout Hyrule."
+    },
+    {
+      "question": "Quel est le niveau maximum de Link (cœurs + endurance combinés) ?",
+      "options": ["30", "40", "50", "60"],
+      "correctAnswer": 1,
+      "explanation": "Avec 120 sanctuaires, on peut obtenir 30 cœurs OU 3 jauges d'endurance max."
+    },
+    {
+      "question": "Combien de fragments d'étoile faut-il pour améliorer complètement une armure ?",
+      "options": ["1", "2", "3", "5"],
+      "correctAnswer": 1,
+      "explanation": "Les armures de niveau 4 nécessitent 2 fragments d'étoile pour l'upgrade final."
+    },
+    {
+      "question": "Quel est le nombre exact de sanctuaires dans le jeu ?",
+      "options": ["100", "108", "120", "150"],
+      "correctAnswer": 2,
+      "explanation": "Il y a précisément 120 sanctuaires (dont 4 pour les créatures divines)."
+    },
+    {
+      "question": "Comment s'appelle le DLC qui ajoute la Moto Antigrav ?",
+      "options": ["The Master Trials", "The Champion's Ballad", "Les Épreuves légendaires", "L'Ode aux Prodiges"],
+      "correctAnswer": 3,
+      "explanation": "L'Ode aux Prodiges (DLC 2) offre la Master Cycle Zero (moto)."
+    },
+    {
+      "question": "Quelle est la durabilité de la Master Sword (nombre de coups) ?",
+      "options": ["40", "80", "188", "Infinie"],
+      "correctAnswer": 2,
+      "explanation": "L'Épée de Légende a 188 de durabilité (se recharge après utilisation)."
+    },
+    {
+      "question": "Combien de types de dragons peut-on trouver dans le jeu ?",
+      "options": ["1", "3", "5", "7"],
+      "correctAnswer": 1,
+      "explanation": "Il y a 3 dragons : Ordrac (feu), Nedrac (glace) et Rordrac (foudre)."
+    },
+    {
+      "question": "Quel temps de speedrun Any% le jeu permet-il environ ?",
+      "options": ["10 minutes", "30 minutes", "2 heures", "10 heures"],
+      "correctAnswer": 1,
+      "explanation": "Les speedrunners élites peuvent finir le jeu en moins de 30 minutes avec des glitches."
+    },
+    {
+      "question": "Combien y a-t-il d'emplacements de sauvegarde automatique ?",
+      "options": ["1", "3", "5", "Illimité"],
+      "correctAnswer": 1,
+      "explanation": "Le jeu maintient 3 sauvegardes auto (dernière, avant boss, avant sanctuaire)."
+    },
+    {
+      "question": "Quel est le nom du moteur physique utilisé dans le jeu ?",
+      "options": ["Unity", "Unreal", "Havok", "Propriétaire Nintendo"],
+      "correctAnswer": 2,
+      "explanation": "Breath of the Wild utilise le moteur physique Havok pour sa physique avancée."
+    }
+  ]
+}
+

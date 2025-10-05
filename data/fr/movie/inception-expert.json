@@ -1,0 +1,72 @@
+{
+  "slug": "inception-expert",
+  "title": "Inception - Mode Expert",
+  "category": "movie",
+  "description": "Seuls les vrais fans d'Inception survivront à ce quiz difficile ! Détails techniques et références pointues.",
+  "difficulty": "hard",
+  "createdAt": "2025-10-02T11:00:00Z",
+  "releaseYear": 2010,
+  "questions": [
+    {
+      "question": "Quel est le nom complet de la technique utilisée par Cobb ?",
+      "options": ["Dream Extraction", "Somnacin Infiltration", "Neural Theft", "Subconscious Mining"],
+      "correctAnswer": 0,
+      "explanation": "L'extraction de rêves est la technique de vol d'informations dans le subconscient."
+    },
+    {
+      "question": "Combien de temps réel représente une semaine dans le niveau 3 du rêve ?",
+      "options": ["10 ans", "20 ans", "50 ans", "100 ans"],
+      "correctAnswer": 0,
+      "explanation": "Le facteur de dilatation temporelle est exponentiel selon les niveaux."
+    },
+    {
+      "question": "Quel compositeur a créé la bande originale iconique du film ?",
+      "options": ["John Williams", "Hans Zimmer", "Howard Shore", "Alexandre Desplat"],
+      "correctAnswer": 1,
+      "explanation": "Hans Zimmer a composé la BO mémorable avec le fameux 'Time'."
+    },
+    {
+      "question": "Quelle est la signification du numéro 528491 dans le film ?",
+      "options": ["Code du coffre de Fischer", "Numéro de chambre d'hôtel", "Code de la valise", "Numéro de vol"],
+      "correctAnswer": 0,
+      "explanation": "C'est la combinaison du coffre-fort dans le subconscient de Fischer."
+    },
+    {
+      "question": "Dans quelle ville Cobb et Mal ont-ils passé 50 ans ensemble ?",
+      "options": ["Paris onirique", "New York rêvé", "Les Limbes", "Tokyo virtuel"],
+      "correctAnswer": 2,
+      "explanation": "Ils ont construit leur monde dans les limbes avant que tout ne s'effondre."
+    },
+    {
+      "question": "Quel acteur japonais joue Saito ?",
+      "options": ["Ken Watanabe", "Hiroyuki Sanada", "Tadanobu Asano", "Takeshi Kitano"],
+      "correctAnswer": 0,
+      "explanation": "Ken Watanabe incarne l'homme d'affaires Saito qui engage Cobb."
+    },
+    {
+      "question": "Quelle technique Penrose est référencée dans le film ?",
+      "options": ["Triangle de Penrose", "Escalier de Penrose", "Cube de Penrose", "Boucle de Penrose"],
+      "correctAnswer": 1,
+      "explanation": "L'escalier de Penrose crée une boucle infinie, montré par Ariadne."
+    },
+    {
+      "question": "Quel est le budget de production du film ?",
+      "options": ["100 millions", "160 millions", "200 millions", "250 millions"],
+      "correctAnswer": 1,
+      "explanation": "Le budget était de 160 millions de dollars pour ce blockbuster ambitieux."
+    },
+    {
+      "question": "Combien de rêveurs (dreamers) différents sont utilisés ?",
+      "options": ["2", "3", "4", "5"],
+      "correctAnswer": 1,
+      "explanation": "Yusuf, Arthur et Eames sont les trois rêveurs des différents niveaux."
+    },
+    {
+      "question": "Quelle université la vraie Ariadne étudie-t-elle dans le film ?",
+      "options": ["MIT", "Harvard", "Paris-Sorbonne", "Oxford"],
+      "correctAnswer": 2,
+      "explanation": "Ariadne est étudiante en architecture à la Sorbonne à Paris."
+    }
+  ]
+}
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" role="img" aria-label="Quizzflix logo lockup">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff3347"/>
+      <stop offset="100%" stop-color="#E50914"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon (left) -->
+  <g transform="translate(20,20)">
+    <path fill="url(#g2)" d="M88 0h256c35.3 0 64 28.7 64 64v152c0 35.3-28.7 64-64 64H192l-70 64c-6.7 6.1-18 1.6-18-7.5V280H88c-35.3 0-64-28.7-64-64V64C24 28.7 52.7 0 88 0z"/>
+    <path fill="#ff4a58" d="M56 40h320v48H56z"/>
+    <path fill="#ffffff" fill-opacity=".25" d="M76 40h44l-20 48H56zM150 40h44l-20 48h-44zM224 40h44l-20 48h-44zM298 40h44l-20 48h-44z"/>
+    <path fill="#ffffff" fill-opacity=".9" d="M180 136l96 56-96 56z"/>
+  </g>
+  <!-- Wordmark (right) -->
+  <g transform="translate(420,95)">
+    <text x="0" y="90" font-family="Inter, Poppins, Arial, Helvetica, sans-serif" font-size="140" font-weight="800" letter-spacing="2" fill="#E50914">QUIZZFLIX</text>
+    <text x="4" y="160" font-family="Inter, Poppins, Arial, Helvetica, sans-serif" font-size="44" font-weight="600" fill="#E50914" opacity="0.9">Quiz ciné, séries &amp; jeux</text>
+  </g>
+</svg>

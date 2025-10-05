@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "required": ["title", "category", "description", "difficulty", "questions"],
+  "properties": {
+    "title": { 
+      "type": "string",
+      "description": "Titre du quiz"
+    },
+    "category": { 
+      "type": "string",
+      "enum": ["movie", "tv", "game"],
+      "description": "Catégorie du contenu"
+    },
+    "description": { 
+      "type": "string",
+      "description": "Description du quiz"
+    },
+    "difficulty": { 
+      "type": "string",
+      "enum": ["easy", "medium", "hard"],
+      "description": "Niveau de difficulté global"
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["question", "options", "correctAnswer", "explanation"],
+        "properties": {
+          "question": { 
+            "type": "string",
+            "description": "Texte de la question"
+          },
+          "options": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": { "type": "string" },
+            "description": "Les 4 options de réponse"
+          },
+          "correctAnswer": { 
+            "type": "number",
+            "minimum": 0,
+            "maximum": 3,
+            "description": "Index de la bonne réponse (0-3)"
+          },
+          "explanation": { 
+            "type": "string",
+            "maxLength": 180,
+            "description": "Explication courte de la réponse"
+          }
+        }
+      }
+    },
+    "source_refs": {
+      "type": "object",
+      "properties": { 
+        "tmdb_id": { "type": "string" },
+        "media_type": { "type": "string" }
+      },
+      "description": "Références aux sources de données"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "name": "QuizzFlix - Agent IA Maître",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 */6 * * *"
+            }
+          ]
+        }
+      },
+      "id": "schedule",
+      "name": "Déclencheur Intelligent",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Agent IA Maître - Analyse et Décision\nconst currentTime = new Date()\nconst hour = currentTime.getHours()\nconst dayOfWeek = currentTime.getDay()\n\n// Logique de décision intelligente\nlet action = 'monitor'\nlet context = {\n  timestamp: currentTime.toISOString(),\n  hour: hour,\n  dayOfWeek: dayOfWeek,\n  reason: ''\n}\n\n// Planification hebdomadaire (Lundi 6h)\nif (dayOfWeek === 1 && hour === 6) {\n  action = 'plan_weekly'\n  context.reason = 'Planification hebdomadaire - Lundi 6h'\n}\n// Génération quotidienne (6h, 12h, 18h)\nelse if ([6, 12, 18].includes(hour)) {\n  action = 'generate_daily'\n  context.reason = `Génération quotidienne - ${hour}h`\n}\n// Monitoring et maintenance\nelse {\n  action = 'monitor'\n  context.reason = 'Monitoring système'\n}\n\nreturn [{ json: {\n  action: action,\n  context: context,\n  timestamp: currentTime.toISOString()\n} }]"
+      },
+      "id": "ai_decision",
+      "name": "Agent IA - Analyse et Décision",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Tu es l'Agent IA Maître de QuizzFlix. Tu orchestres intelligemment la génération de quizz en analysant les tendances, optimisant les ressources et adaptant la stratégie. Tu prends des décisions basées sur le contexte et les données disponibles."
+            },
+            {
+              "role": "user",
+              "content": "=Analyse la situation actuelle :\n- Action requise: {{ $json.action }}\n- Contexte: {{ $json.context.reason }}\n- Heure: {{ $json.context.hour }}\n- Jour: {{ $json.context.dayOfWeek }}\n\nDonne-moi une stratégie optimisée pour cette action, incluant :\n1. Analyse de la situation\n2. Stratégie recommandée\n3. Paramètres optimaux\n4. Actions à entreprendre\n\nRéponds en JSON avec cette structure :\n{\n  \"analysis\": \"analyse de la situation\",\n  \"strategy\": \"stratégie recommandée\",\n  \"parameters\": {\n    \"priority\": \"high|medium|low\",\n    \"resource_allocation\": \"description\",\n    \"timing\": \"optimisations temporelles\"\n  },\n  \"actions\": [\"action1\", \"action2\", \"action3\"],\n  \"monitoring\": \"points de surveillance\"\n}"
+            }
+          ]
+        }
+      },
+      "id": "ai_strategy",
+      "name": "Agent IA - Stratégie",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Exécution des actions basée sur la stratégie IA\nconst strategy = $input.first().json\nconst originalContext = $input.first().json\n\n// Déterminer quelle action exécuter\nlet nextAction = 'monitor'\nlet parameters = {}\n\nif (originalContext.action === 'plan_weekly') {\n  nextAction = 'execute_weekly_planning'\n  parameters = {\n    priority: strategy.parameters?.priority || 'high',\n    resource_allocation: strategy.parameters?.resource_allocation || 'standard',\n    ai_strategy: strategy\n  }\n} else if (originalContext.action === 'generate_daily') {\n  nextAction = 'execute_daily_generation'\n  parameters = {\n    priority: strategy.parameters?.priority || 'high',\n    resource_allocation: strategy.parameters?.resource_allocation || 'standard',\n    ai_strategy: strategy,\n    generation_time: originalContext.context.hour\n  }\n} else {\n  nextAction = 'monitor_system'\n  parameters = {\n    priority: 'low',\n    ai_strategy: strategy\n  }\n}\n\nreturn [{ json: {\n  nextAction: nextAction,\n  parameters: parameters,\n  ai_analysis: strategy.analysis,\n  ai_strategy: strategy.strategy,\n  timestamp: originalContext.timestamp\n} }]"
+      },
+      "id": "execution_router",
+      "name": "Routeur d'Exécution",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Monitoring et Logging Intelligent\nconst execution = $input.first().json\n\nconst logEntry = {\n  timestamp: execution.timestamp,\n  action: execution.nextAction,\n  status: 'initiated',\n  ai_analysis: execution.ai_analysis,\n  ai_strategy: execution.ai_strategy,\n  parameters: execution.parameters,\n  performance_metrics: {\n    start_time: new Date().toISOString(),\n    resource_usage: 'monitoring',\n    success_rate: 'tracking'\n  }\n}\n\nconsole.log('🤖 Agent IA QuizzFlix - Action:', execution.nextAction)\nconsole.log('📊 Stratégie IA:', execution.ai_strategy)\nconsole.log('⚙️ Paramètres:', execution.parameters)\n\n// Préparer les données pour l'exécution\nreturn [{ json: {\n  ...execution,\n  log_entry: logEntry,\n  ready_for_execution: true\n} }]"
+      },
+      "id": "monitoring",
+      "name": "Monitoring Intelligent",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "message": "=Agent IA activé - Action: {{ $json.nextAction }}",
+          "status": "=Prêt pour exécution",
+          "ai_strategy": "={{ $json.ai_strategy }}"
+        }
+      },
+      "id": "set_result",
+      "name": "Résultat Agent IA",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1340,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Déclencheur Intelligent": {
+      "main": [
+        [
+          {
+            "node": "Agent IA - Analyse et Décision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent IA - Analyse et Décision": {
+      "main": [
+        [
+          {
+            "node": "Agent IA - Stratégie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent IA - Stratégie": {
+      "main": [
+        [
+          {
+            "node": "Routeur d'Exécution",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Routeur d'Exécution": {
+      "main": [
+        [
+          {
+            "node": "Monitoring Intelligent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Monitoring Intelligent": {
+      "main": [
+        [
+          {
+            "node": "Résultat Agent IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null
+}

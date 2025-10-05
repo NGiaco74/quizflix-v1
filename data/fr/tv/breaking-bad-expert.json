@@ -1,0 +1,72 @@
+{
+  "slug": "breaking-bad-expert",
+  "title": "Breaking Bad - Mode Expert",
+  "category": "tv",
+  "description": "Pour les vrais connaisseurs de Breaking Bad. Détails pointus et références cachées !",
+  "difficulty": "hard",
+  "createdAt": "2025-10-02T13:00:00Z",
+  "releaseYear": 2008,
+  "questions": [
+    {
+      "question": "Quel est le pourcentage de pureté de la meth de Walter ?",
+      "options": ["96%", "98%", "99.1%", "100%"],
+      "correctAnswer": 2,
+      "explanation": "La meth de Walter atteint 99.1% de pureté, un record."
+    },
+    {
+      "question": "Comment s'appelle la société de couverture de Gus Fring ?",
+      "options": ["Los Pollos Locos", "Los Pollos Hermanos", "El Pollo Loco", "Pollos Brothers"],
+      "correctAnswer": 1,
+      "explanation": "Los Pollos Hermanos est la chaîne de fast-food façade de Gus."
+    },
+    {
+      "question": "Quel élément chimique est au centre du logo de la série ?",
+      "options": ["Brome (Br)", "Baryum (Ba)", "Les deux", "Bore (B)"],
+      "correctAnswer": 2,
+      "explanation": "Br (Brome) et Ba (Baryum) forment 'Breaking Bad' en notation chimique."
+    },
+    {
+      "question": "Combien d'Emmy Awards la série a-t-elle remportés au total ?",
+      "options": ["12", "16", "20", "24"],
+      "correctAnswer": 1,
+      "explanation": "Breaking Bad a remporté 16 Emmy Awards durant sa diffusion."
+    },
+    {
+      "question": "Quel est le vrai prénom de Saul Goodman ?",
+      "options": ["Saul McGill", "James McGill", "Jimmy McGill", "Samuel McGill"],
+      "correctAnswer": 2,
+      "explanation": "Jimmy McGill est son vrai nom, révélé dans Better Call Saul."
+    },
+    {
+      "question": "Quelle couleur Walter porte-t-il majoritairement en début de série ?",
+      "options": ["Noir", "Beige/kaki", "Bleu", "Gris"],
+      "correctAnswer": 1,
+      "explanation": "La palette de couleurs évolue : beige au début, puis vert, bleu, noir."
+    },
+    {
+      "question": "Combien de personnes Walter a-t-il tuées dans la série (directement) ?",
+      "options": ["5", "10", "13", "27"],
+      "correctAnswer": 2,
+      "explanation": "Walter est directement responsable de 13 morts dans la série."
+    },
+    {
+      "question": "Quel est le numéro de plaque de la voiture de Jesse (Chevrolet Monte Carlo) ?",
+      "options": ["THE CAPN", "CAPN COOK", "JHB 420", "CAPNC00K"],
+      "correctAnswer": 1,
+      "explanation": "Sa plaque 'CAPN COOK' fait référence à son surnom Captain Cook."
+    },
+    {
+      "question": "Dans quel épisode Walter dit-il 'I am the one who knocks' ?",
+      "options": ["S04E06 Cornered", "S05E01 Live Free", "S04E01 Box Cutter", "S03E13 Full Measure"],
+      "correctAnswer": 0,
+      "explanation": "Cette réplique culte est prononcée dans l'épisode S04E06 'Cornered'."
+    },
+    {
+      "question": "Quelle entreprise Walter et Skyler ont-ils cofondée ?",
+      "options": ["White Industries", "Gray Matter", "Blue Sky Inc", "Heisenberg Corp"],
+      "correctAnswer": 1,
+      "explanation": "Gray Matter Technologies, qu'il a quitté pour une bouchée de pain."
+    }
+  ]
+}
+

@@ -1,0 +1,179 @@
+{
+  "name": "QuizzFlix - Planificateur Hebdomadaire",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 6 * * 1"
+            }
+          ],
+          "timezone": "Europe/Paris"
+        }
+      },
+      "id": "weekly_schedule",
+      "name": "Planification Hebdomadaire",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.themoviedb.org/3/trending/all/day",
+        "method": "GET",
+        "queryParameters": {
+          "api_key": "={{ $env.TMDB_API_KEY }}",
+          "language": "fr-FR"
+        }
+      },
+      "id": "fetch_trending",
+      "name": "Récupérer Tendance TMDb",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const items = $input.all()\nconst trendingData = items[0].json.results || []\n\n// Filtre et trie par popularité\nconst unique = [...new Map(trendingData.map(item => [item.id, item])).values()]\n\n// Sélectionne les 7 premiers sujets pour la semaine\nconst weekPlan = unique.slice(0, 7).map((item, idx) => {\n  return {\n    dayOfWeek: idx,\n    title: item.title || item.name,\n    id: item.id,\n    media_type: item.media_type,\n    popularity: item.popularity,\n    overview: item.overview\n  }\n})\n\nreturn weekPlan.map(item => ({ json: item }))"
+      },
+      "id": "build_week_plan",
+      "name": "Construire Plan Semaine",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "plan_created_at",
+              "name": "plan_created_at",
+              "value": "={{ new Date().toISOString() }}",
+              "type": "string"
+            },
+            {
+              "id": "week_start",
+              "name": "week_start",
+              "value": "={{ new Date().toISOString().split('T')[0] }}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "annotate_plan",
+      "name": "Annoter Plan",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const fs = require('fs')\nconst path = require('path')\n\n// Créer le répertoire s'il n'existe pas\nconst dataDir = '/tmp/quizflix_data'\nif (!fs.existsSync(dataDir)) {\n  fs.mkdirSync(dataDir, { recursive: true })\n}\n\n// Préparer le plan complet\nconst items = $input.all()\nconst weekPlan = {\n  created_at: new Date().toISOString(),\n  week_start: items[0].json.week_start,\n  topics: items.map(item => item.json)\n}\n\n// Sauvegarder dans un fichier JSON\nconst filePath = path.join(dataDir, 'quiz_plan.json')\nfs.writeFileSync(filePath, JSON.stringify(weekPlan, null, 2))\n\nreturn [{ json: { success: true, file_path: filePath, topics_count: items.length } }]"
+      },
+      "id": "save_plan",
+      "name": "Sauvegarder Plan",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const result = $input.first().json\nconst message = `✅ Plan hebdomadaire des quizz généré avec succès !\\n\\n📅 Semaine du ${result.week_start}\\n📊 ${result.topics_count} sujets sélectionnés\\n💾 Sauvegardé dans : ${result.file_path}`\n\nconsole.log(message)\n\nreturn [{ json: { \n  success: true, \n  message: message,\n  topics_count: result.topics_count,\n  week_start: result.week_start\n} }]"
+      },
+      "id": "notify_plan_ready",
+      "name": "Notification Plan Prêt",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Planification Hebdomadaire": {
+      "main": [
+        [
+          {
+            "node": "Récupérer Tendance TMDb",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Récupérer Tendance TMDb": {
+      "main": [
+        [
+          {
+            "node": "Construire Plan Semaine",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Construire Plan Semaine": {
+      "main": [
+        [
+          {
+            "node": "Annoter Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Annoter Plan": {
+      "main": [
+        [
+          {
+            "node": "Sauvegarder Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauvegarder Plan": {
+      "main": [
+        [
+          {
+            "node": "Notification Plan Prêt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

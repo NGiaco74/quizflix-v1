@@ -1,9 +1,11 @@
 {
   "slug": "zelda-botw",
-  "title": "The Legend of Zelda: Breath of the Wild",
+  "title": "Zelda BotW - Niveau Intermédiaire",
   "category": "game",
   "description": "Testez vos connaissances sur cette révolution du jeu d'aventure open-world. Pas de spoilers majeurs.",
   "difficulty": "medium",
+  "createdAt": "2025-10-01T12:00:00Z",
+  "releaseYear": 2017,
   "questions": [
     {
       "question": "Sur quelle console Breath of the Wild est-il sorti en premier ?",

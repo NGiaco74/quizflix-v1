@@ -1,0 +1,122 @@
+{
+  "slug": "stranger-things-expert-monde-envers",
+  "title": "Stranger Things - Expert du Monde à l'Envers",
+  "category": "tv",
+  "description": "Seuls les vrais experts survivront à ce quiz ! Détails pointus et références cachées.",
+  "difficulty": "hard",
+  "createdAt": "2025-10-05T16:00:00Z",
+  "releaseYear": 2016,
+  "questions": [
+    {
+      "question": "Quelle police a inspiré le logo de la série ?",
+      "options": [
+        "ITC Benguiat",
+        "Helvetica Neue",
+        "Futura",
+        "Garamond"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Le logo s'inspire de l'ITC Benguiat, typique des années 80."
+    },
+    {
+      "question": "Qui compose la musique originale de la série ?",
+      "options": [
+        "Trent Reznor & Atticus Ross",
+        "Kyle Dixon & Michael Stein",
+        "Vangelis",
+        "Michael Giacchino"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Dixon & Stein, du groupe S U R V I V E, signent la BO synthé."
+    },
+    {
+      "question": "Dans quel État la série est-elle principalement tournée ?",
+      "options": [
+        "Californie",
+        "Nouveau-Mexique",
+        "Géorgie",
+        "Caroline du Nord"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Le tournage se fait surtout en Géorgie, autour d'Atlanta."
+    },
+    {
+      "question": "Quelle société de Shawn Levy coproduit Stranger Things ?",
+      "options": [
+        "Bad Robot",
+        "Monkeypaw",
+        "Amblin Television",
+        "21 Laps Entertainment"
+      ],
+      "correctAnswer": 3,
+      "explanation": "21 Laps Entertainment coproduit la série avec Netflix."
+    },
+    {
+      "question": "Comment s'appellent les frères créateurs de la série ?",
+      "options": [
+        "Matt et Ross",
+        "Joel et Ethan",
+        "Duff et Ron",
+        "Ben et Casey"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Matt et Ross Duffer sont les créateurs et showrunners."
+    },
+    {
+      "question": "Dans quel centre commercial réel a été tourné Starcourt Mall ?",
+      "options": [
+        "Mall of Georgia",
+        "Lenox Square",
+        "Gwinnett Place Mall",
+        "Perimeter Mall"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Starcourt a été installé dans le Gwinnett Place Mall à Duluth."
+    },
+    {
+      "question": "Quel film des années 80 figure sur l'enseigne du cinéma de Starcourt ?",
+      "options": [
+        "Back to the Future",
+        "E.T.",
+        "Gremlins",
+        "The Breakfast Club"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Back to the Future apparaît en clin d'œil aux années 80."
+    },
+    {
+      "question": "D'où vient le nom « Démogorgon » utilisé par les enfants ?",
+      "options": [
+        "Player's Handbook",
+        "Monster Manual",
+        "Dungeon Master's Guide",
+        "Fiend Folio"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Le nom vient du Monster Manual d'AD&D, référence D&D."
+    },
+    {
+      "question": "Quelle est la mascotte de Hawkins High School ?",
+      "options": [
+        "Les Hawks",
+        "Les Panthers",
+        "Les Bears",
+        "Les Tigers"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Hawkins High a pour mascotte les Tigers."
+    },
+    {
+      "question": "À quel projet réel du gouvernement US le Hawkins Lab fait-il écho ?",
+      "options": [
+        "Manhattan",
+        "Paperclip",
+        "MKUltra",
+        "Blue Book"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Le laboratoire rappelle les expériences du programme MKUltra."
+    }
+  ]
+}
+

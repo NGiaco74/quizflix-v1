@@ -1,0 +1,108 @@
+{
+  "name": "QuizzFlix - Workflow Simple",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 6 * * 1"
+            }
+          ]
+        }
+      },
+      "id": "schedule",
+      "name": "Déclencheur Hebdomadaire",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.themoviedb.org/3/trending/all/day",
+        "method": "GET",
+        "queryParameters": {
+          "api_key": "={{ $env.TMDB_API_KEY }}",
+          "language": "fr-FR"
+        }
+      },
+      "id": "http_request",
+      "name": "Récupérer Tendance TMDb",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const items = $input.all()\nconst trendingData = items[0].json.results || []\n\n// Sélectionne les 7 premiers sujets pour la semaine\nconst weekPlan = trendingData.slice(0, 7).map((item, idx) => {\n  return {\n    dayOfWeek: idx,\n    title: item.title || item.name,\n    id: item.id,\n    media_type: item.media_type,\n    popularity: item.popularity,\n    overview: item.overview\n  }\n})\n\nreturn weekPlan.map(item => ({ json: item }))"
+      },
+      "id": "function",
+      "name": "Construire Plan",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "message": "=Plan hebdomadaire généré avec {{ $json.length }} sujets"
+        }
+      },
+      "id": "set",
+      "name": "Résultat",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Déclencheur Hebdomadaire": {
+      "main": [
+        [
+          {
+            "node": "Récupérer Tendance TMDb",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Récupérer Tendance TMDb": {
+      "main": [
+        [
+          {
+            "node": "Construire Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Construire Plan": {
+      "main": [
+        [
+          {
+            "node": "Résultat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null
+}

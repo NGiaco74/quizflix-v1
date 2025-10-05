@@ -1,0 +1,283 @@
+{
+  "name": "QuizzFlix - Générateur Quotidien",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "5 6,12,18 * * *"
+            }
+          ],
+          "timezone": "Europe/Paris"
+        }
+      },
+      "id": "daily_schedule",
+      "name": "Planification Quotidienne",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const fs = require('fs')\nconst path = require('path')\n\n// Lire le plan hebdomadaire\nconst filePath = '/tmp/quizflix_data/quiz_plan.json'\n\nif (!fs.existsSync(filePath)) {\n  throw new Error('Plan hebdomadaire non trouvé. Exécutez d\\'abord le planificateur hebdomadaire.')\n}\n\nconst planContent = fs.readFileSync(filePath, 'utf-8')\nconst weekPlan = JSON.parse(planContent)\n\nreturn [{ json: weekPlan }]"
+      },
+      "id": "read_week_plan",
+      "name": "Lire Plan Semaine",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const plan = $input.first().json\nconst date = new Date()\nconst dayIndex = date.getDay() - 1 // 0=lundi\n\n// Si c'est dimanche (dayIndex = -1), utiliser le 6ème élément (samedi)\nconst adjustedDayIndex = dayIndex < 0 ? 6 : dayIndex\n\nconst todayTopic = plan.topics[adjustedDayIndex] || plan.topics[0]\n\nreturn [{ json: { \n  ...todayTopic,\n  selected_day: adjustedDayIndex,\n  current_date: date.toISOString().split('T')[0]\n} }]"
+      },
+      "id": "select_today_topic",
+      "name": "Sélectionner Sujet du Jour",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Créer 3 éléments pour les 3 niveaux de difficulté\nconst difficulties = ['easy', 'medium', 'hard']\nconst topic = $input.first().json\n\nreturn difficulties.map(difficulty => ({\n  json: {\n    ...topic,\n    difficulty: difficulty,\n    target_questions: difficulty === 'easy' ? 10 : difficulty === 'medium' ? 11 : 12\n  }\n}))"
+      },
+      "id": "generate_3_quiz_loop",
+      "name": "Boucle Génération 3 Quiz",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "chatModel": "gpt-4o",
+        "prompt": {
+          "messages": {
+            "values": [
+              {
+                "role": "system",
+                "content": "Tu es un générateur de quizz sur les films, les séries et les jeux vidéo pour un public francophone. Tu produis des quizz avec des niveaux de difficulté faciles, moyens et difficiles. Chaque quizz doit comporter 10-12 questions, 4 choix, 1 bonne réponse et une explication courte sans spoiler. Tu réponds en JSON strict selon le schéma fourni."
+              },
+              {
+                "role": "user",
+                "content": "=Sujet: {{ $json.title }} (ID: {{ $json.id }}, type: {{ $json.media_type }}). Niveau: {{ $json.difficulty }}. Langue: fr. Génère un quizz conforme aux exigences : {{ $json.target_questions }} questions, 4 choix, 1 réponse correcte, une explication courte (<=180 caractères), sans spoiler majeur. Mélange les difficultés selon le niveau demandé. Réponds uniquement en JSON valide selon le schéma QuizzFlix."
+              }
+            ]
+          }
+        },
+        "simplifyOutput": true,
+        "options": {
+          "temperature": 0.5,
+          "maxTokens": 1800
+        }
+      },
+      "id": "generate_quiz_json",
+      "name": "Générer Quiz avec IA",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        300
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "functionCode": "const quizData = $input.first().json\nconst originalTopic = $input.first().json\n\n// Validation basique du schéma QuizzFlix\nconst requiredFields = ['title', 'category', 'description', 'difficulty', 'questions']\nconst missingFields = requiredFields.filter(field => !quizData[field])\n\nif (missingFields.length > 0) {\n  throw new Error(`Champs manquants dans le quiz: ${missingFields.join(', ')}`)\n}\n\n// Validation des questions\nif (!Array.isArray(quizData.questions) || quizData.questions.length < 10) {\n  throw new Error('Le quiz doit contenir au moins 10 questions')\n}\n\n// Validation de chaque question\nquizData.questions.forEach((question, index) => {\n  if (!question.question || !question.options || question.options.length !== 4) {\n    throw new Error(`Question ${index + 1}: format invalide`)\n  }\n  if (typeof question.correctAnswer !== 'number' || question.correctAnswer < 0 || question.correctAnswer > 3) {\n    throw new Error(`Question ${index + 1}: correctAnswer doit être entre 0 et 3`)\n  }\n  if (!question.explanation || question.explanation.length > 180) {\n    throw new Error(`Question ${index + 1}: explication manquante ou trop longue`)\n  }\n})\n\n// Ajouter les métadonnées du sujet original\nconst validatedQuiz = {\n  ...quizData,\n  slug: quizData.title.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, ''),\n  source_refs: {\n    tmdb_id: originalTopic.id,\n    media_type: originalTopic.media_type\n  },\n  generated_at: new Date().toISOString()\n}\n\nreturn [{ json: validatedQuiz }]"
+      },
+      "id": "validate_quiz_schema",
+      "name": "Valider Schéma Quiz",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const fs = require('fs')\nconst path = require('path')\n\nconst quiz = $input.first().json\n\n// Déterminer le répertoire selon la catégorie\nconst categoryMap = {\n  'movie': 'movie',\n  'tv': 'tv', \n  'tv_series': 'tv',\n  'tv_show': 'tv'\n}\n\nconst category = categoryMap[quiz.source_refs.media_type] || 'movie'\nconst locale = 'fr' // Pour l'instant, on génère en français\n\n// Créer le répertoire s'il n'existe pas\nconst dataDir = path.join('/tmp/quizflix_data', locale, category)\nif (!fs.existsSync(dataDir)) {\n  fs.mkdirSync(dataDir, { recursive: true })\n}\n\n// Sauvegarder le quiz\nconst fileName = `${quiz.slug}.json`\nconst filePath = path.join(dataDir, fileName)\nfs.writeFileSync(filePath, JSON.stringify(quiz, null, 2))\n\nreturn [{ json: {\n  success: true,\n  file_path: filePath,\n  quiz_title: quiz.title,\n  difficulty: quiz.difficulty,\n  questions_count: quiz.questions.length\n} }]"
+      },
+      "id": "save_quiz_file",
+      "name": "Sauvegarder Quiz",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://quizzflix.fr/api/og",
+        "method": "GET",
+        "queryParameters": {
+          "title": "={{ $json.quiz_title }}",
+          "score": "0",
+          "max": "={{ $json.questions_count }}"
+        }
+      },
+      "id": "generate_images",
+      "name": "Générer Images OG",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1780,
+        300
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "functionCode": "const result = $input.first().json\nconst quiz = $input.first().json\n\nconst socialPayload = {\n  post_text: `🎬 Nouveau quiz : ${quiz.quiz_title} – Teste tes connaissances !\\n\\n#QuizFlix #${quiz.difficulty} #${quiz.source_refs?.media_type || 'entertainment'}`,\n  url: `https://quizzflix.fr/quiz/${quiz.slug}?utm_source=social&utm_medium=organic&utm_campaign=${quiz.slug}`,\n  image_url: 'https://quizzflix.fr/api/og?title=' + encodeURIComponent(quiz.quiz_title) + '&score=0&max=' + quiz.questions_count,\n  scheduled_for: new Date(Date.now() + Math.random() * 3600000).toISOString(), // Dans l'heure qui suit\n  platform: 'twitter',\n  quiz_data: quiz\n}\n\nreturn [{ json: socialPayload }]"
+      },
+      "id": "prepare_social_payload",
+      "name": "Préparer Publication Sociale",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const result = $input.first().json\nconst message = `✅ Quiz généré avec succès !\\n\\n📝 Titre: ${result.quiz_data.quiz_title}\\n🎯 Difficulté: ${result.quiz_data.difficulty}\\n❓ Questions: ${result.quiz_data.questions_count}\\n💾 Fichier: ${result.quiz_data.file_path}\\n📅 Publié pour: ${result.scheduled_for}`\n\nconsole.log(message)\n\nreturn [{ json: {\n  success: true,\n  message: message,\n  quiz_title: result.quiz_data.quiz_title,\n  difficulty: result.quiz_data.difficulty\n} }]"
+      },
+      "id": "log_completion",
+      "name": "Log Completion",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Planification Quotidienne": {
+      "main": [
+        [
+          {
+            "node": "Lire Plan Semaine",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lire Plan Semaine": {
+      "main": [
+        [
+          {
+            "node": "Sélectionner Sujet du Jour",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sélectionner Sujet du Jour": {
+      "main": [
+        [
+          {
+            "node": "Boucle Génération 3 Quiz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Boucle Génération 3 Quiz": {
+      "main": [
+        [
+          {
+            "node": "Générer Quiz avec IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Générer Quiz avec IA": {
+      "main": [
+        [
+          {
+            "node": "Valider Schéma Quiz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Valider Schéma Quiz": {
+      "main": [
+        [
+          {
+            "node": "Sauvegarder Quiz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauvegarder Quiz": {
+      "main": [
+        [
+          {
+            "node": "Générer Images OG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Générer Images OG": {
+      "main": [
+        [
+          {
+            "node": "Préparer Publication Sociale",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Préparer Publication Sociale": {
+      "main": [
+        [
+          {
+            "node": "Log Completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "name": "QuizzFlix - Générateur Quotidien (Sous-workflow)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daily-generation",
+        "responseMode": "responseNode"
+      },
+      "id": "webhook",
+      "name": "Déclencheur Génération",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Validation et préparation des paramètres Agent IA\nconst input = $input.first().json\n\nif (!input.parameters || !input.ai_strategy) {\n  throw new Error('Paramètres Agent IA manquants')\n}\n\nconst aiParams = input.parameters\nconst aiStrategy = input.ai_strategy\n\n// Adapter la stratégie pour la génération quotidienne\nconst adaptedParams = {\n  priority: aiParams.priority || 'high',\n  resource_allocation: aiParams.resource_allocation || 'standard',\n  generation_time: aiParams.generation_time || new Date().getHours(),\n  ai_recommendations: aiStrategy,\n  execution_context: {\n    timestamp: new Date().toISOString(),\n    source: 'ai_agent_master',\n    strategy_id: 'daily_generation_v1'\n  }\n}\n\nreturn [{ json: {\n  ...input,\n  adapted_params: adaptedParams,\n  ready: true\n} }]"
+      },
+      "id": "ai_validation",
+      "name": "Validation Agent IA",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Lire le plan hebdomadaire IA-enhanced\nconst fs = require('fs')\nconst path = require('path')\n\nconst filePath = '/tmp/quizflix_data/quiz_plan_ai_enhanced.json'\n\nif (!fs.existsSync(filePath)) {\n  throw new Error('Plan hebdomadaire IA non trouvé. Exécutez d\\'abord le planificateur.')\n}\n\nconst planContent = fs.readFileSync(filePath, 'utf-8')\nconst weekPlan = JSON.parse(planContent)\n\n// Sélectionner le sujet du jour avec intelligence IA\nconst date = new Date()\nconst dayIndex = date.getDay() - 1 // 0=lundi\nconst adjustedDayIndex = dayIndex < 0 ? 6 : dayIndex\n\nconst todayTopic = weekPlan.topics[adjustedDayIndex] || weekPlan.topics[0]\n\n// Enrichir avec les données IA\nconst enrichedTopic = {\n  ...todayTopic,\n  selected_day: adjustedDayIndex,\n  current_date: date.toISOString().split('T')[0],\n  ai_confidence: todayTopic.data_confidence || 0.8,\n  ai_score: todayTopic.ai_score || 0.8,\n  engagement_prediction: todayTopic.engagement_prediction || 'medium',\n  trending_reason: todayTopic.trending_reason || 'Popularité générale'\n}\n\nreturn [{ json: {\n  ...enrichedTopic,\n  week_plan: weekPlan,\n  ai_enhanced: true\n} }]"
+      },
+      "id": "ai_topic_selection",
+      "name": "Sélection IA du Sujet",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Génération intelligente des 3 niveaux de difficulté\nconst topic = $input.first().json\nconst aiRecommendations = topic.ai_recommendations || {}\n\n// Adapter la difficulté selon les recommandations IA et les prédictions d'engagement\nconst difficulties = ['easy', 'medium', 'hard']\nconst engagementLevel = topic.engagement_prediction || 'medium'\n\n// Ajuster le nombre de questions selon l'engagement prédit\nconst questionCounts = {\n  high: { easy: 10, medium: 11, hard: 12 },\n  medium: { easy: 9, medium: 10, hard: 11 },\n  low: { easy: 8, medium: 9, hard: 10 }\n}\n\nconst counts = questionCounts[engagementLevel] || questionCounts.medium\n\nreturn difficulties.map(difficulty => ({\n  json: {\n    ...topic,\n    difficulty: difficulty,\n    target_questions: counts[difficulty],\n    ai_optimization: {\n      engagement_focus: engagementLevel,\n      difficulty_balance: aiRecommendations.difficulty_distribution || { easy: 4, medium: 3, hard: 3 },\n      ai_confidence: topic.ai_confidence,\n      trending_reason: topic.trending_reason\n    },\n    generation_context: {\n      timestamp: new Date().toISOString(),\n      ai_enhanced: true,\n      source: 'ai_agent_daily_generation'\n    }\n  }\n}))"
+      },
+      "id": "ai_difficulty_optimization",
+      "name": "Optimisation IA Difficulté",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Tu es un générateur expert de quizz sur les films, séries et jeux vidéo. Tu utilises l'intelligence artificielle pour créer des quizz optimisés selon les tendances, l'engagement prédit et les recommandations d'analyse IA. Tu adaptes le contenu selon le niveau de difficulté et les métriques d'engagement."
+            },
+            {
+              "role": "user",
+              "content": "=Génère un quizz optimisé avec IA :\n\nSujet: {{ $json.title }} (ID: {{ $json.id }}, type: {{ $json.media_type }})\nNiveau: {{ $json.difficulty }}\nQuestions cibles: {{ $json.target_questions }}\n\nMétriques IA :\n- Score IA: {{ $json.ai_optimization.ai_confidence }}\n- Engagement prédit: {{ $json.ai_optimization.engagement_focus }}\n- Raison tendance: {{ $json.ai_optimization.trending_reason }}\n- Confiance données: {{ $json.ai_confidence }}\n\nOptimisations requises :\n- Adapter le niveau selon l'engagement prédit\n- Intégrer la raison de la tendance dans les questions\n- Optimiser pour un score IA élevé\n- Varier les types de questions selon la difficulté\n\nGénère un quizz conforme aux exigences :\n- {{ $json.target_questions }} questions\n- 4 choix par question\n- 1 réponse correcte\n- Explication courte (<=180 caractères)\n- Sans spoiler majeur\n- Optimisé pour l'engagement prédit\n\nRéponds uniquement en JSON valide selon le schéma QuizzFlix avec métadonnées IA :\n{\n  \"title\": \"titre optimisé\",\n  \"category\": \"movie|tv|game\",\n  \"description\": \"description avec référence à la tendance\",\n  \"difficulty\": \"easy|medium|hard\",\n  \"questions\": [...],\n  \"ai_metadata\": {\n    \"generation_confidence\": 0.95,\n    \"engagement_optimization\": \"high|medium|low\",\n    \"trending_integration\": \"description\",\n    \"difficulty_balance\": \"description\"\n  }\n}"
+            }
+          ]
+        }
+      },
+      "id": "ai_quiz_generation",
+      "name": "Génération IA Quiz",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Validation et enrichissement IA du quiz généré\nconst quizData = $input.first().json\nconst originalTopic = $input.first().json\n\n// Validation basique du schéma QuizzFlix\nconst requiredFields = ['title', 'category', 'description', 'difficulty', 'questions']\nconst missingFields = requiredFields.filter(field => !quizData[field])\n\nif (missingFields.length > 0) {\n  throw new Error(`Champs manquants dans le quiz: ${missingFields.join(', ')}`)\n}\n\n// Validation des questions\nif (!Array.isArray(quizData.questions) || quizData.questions.length < 8) {\n  throw new Error('Le quiz doit contenir au moins 8 questions')\n}\n\n// Validation de chaque question\nquizData.questions.forEach((question, index) => {\n  if (!question.question || !question.options || question.options.length !== 4) {\n    throw new Error(`Question ${index + 1}: format invalide`)\n  }\n  if (typeof question.correctAnswer !== 'number' || question.correctAnswer < 0 || question.correctAnswer > 3) {\n    throw new Error(`Question ${index + 1}: correctAnswer doit être entre 0 et 3`)\n  }\n  if (!question.explanation || question.explanation.length > 180) {\n    throw new Error(`Question ${index + 1}: explication manquante ou trop longue`)\n  }\n})\n\n// Enrichir avec les métadonnées IA\nconst validatedQuiz = {\n  ...quizData,\n  slug: quizData.title.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, ''),\n  source_refs: {\n    tmdb_id: originalTopic.id,\n    media_type: originalTopic.media_type,\n    ai_enhanced: true\n  },\n  ai_metadata: {\n    ...quizData.ai_metadata,\n    generation_timestamp: new Date().toISOString(),\n    source_topic: {\n      ai_score: originalTopic.ai_score,\n      engagement_prediction: originalTopic.engagement_prediction,\n      trending_reason: originalTopic.trending_reason,\n      data_confidence: originalTopic.ai_confidence\n    },\n    optimization_applied: {\n      engagement_focus: originalTopic.ai_optimization.engagement_focus,\n      difficulty_balance: originalTopic.ai_optimization.difficulty_balance,\n      ai_confidence: originalTopic.ai_optimization.ai_confidence\n    }\n  },\n  generated_at: new Date().toISOString()\n}\n\nreturn [{ json: validatedQuiz }]"
+      },
+      "id": "ai_validation",
+      "name": "Validation IA + Enrichissement",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Sauvegarde intelligente avec métriques IA complètes\nconst quiz = $input.first().json\n\nconst fs = require('fs')\nconst path = require('path')\n\n// Déterminer le répertoire selon la catégorie\nconst categoryMap = {\n  'movie': 'movie',\n  'tv': 'tv', \n  'tv_series': 'tv',\n  'tv_show': 'tv'\n}\n\nconst category = categoryMap[quiz.source_refs.media_type] || 'movie'\nconst locale = 'fr'\n\n// Créer le répertoire s'il n'existe pas\nconst dataDir = path.join('/tmp/quizflix_data', locale, category)\nif (!fs.existsSync(dataDir)) {\n  fs.mkdirSync(dataDir, { recursive: true })\n}\n\n// Sauvegarder le quiz avec métriques IA\nconst fileName = `${quiz.slug}_ai_enhanced.json`\nconst filePath = path.join(dataDir, fileName)\nfs.writeFileSync(filePath, JSON.stringify(quiz, null, 2))\n\n// Créer un rapport de performance pour ce quiz\nconst performanceMetrics = {\n  quiz_id: quiz.slug,\n  generation_timestamp: quiz.generated_at,\n  ai_metrics: {\n    generation_confidence: quiz.ai_metadata?.generation_confidence || 0.8,\n    engagement_optimization: quiz.ai_metadata?.engagement_optimization || 'medium',\n    trending_integration: quiz.ai_metadata?.trending_integration || 'basic',\n    source_ai_score: quiz.ai_metadata?.source_topic?.ai_score || 0.8,\n    engagement_prediction: quiz.ai_metadata?.source_topic?.engagement_prediction || 'medium'\n  },\n  quiz_metrics: {\n    questions_count: quiz.questions.length,\n    difficulty: quiz.difficulty,\n    category: quiz.category,\n    estimated_completion_time: quiz.questions.length * 30 // 30 secondes par question\n  },\n  optimization_applied: quiz.ai_metadata?.optimization_applied || {}\n}\n\nconst metricsPath = path.join(dataDir, `${quiz.slug}_metrics.json`)\nfs.writeFileSync(metricsPath, JSON.stringify(performanceMetrics, null, 2))\n\nreturn [{ json: {\n  success: true,\n  file_path: filePath,\n  metrics_path: metricsPath,\n  quiz_title: quiz.title,\n  difficulty: quiz.difficulty,\n  questions_count: quiz.questions.length,\n  ai_confidence: quiz.ai_metadata?.generation_confidence || 0.8,\n  engagement_prediction: quiz.ai_metadata?.source_topic?.engagement_prediction || 'medium',\n  performance_metrics: performanceMetrics\n} }]"
+      },
+      "id": "ai_save_metrics",
+      "name": "Sauvegarde IA + Métriques",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "id": "response",
+      "name": "Réponse API",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Déclencheur Génération": {
+      "main": [
+        [
+          {
+            "node": "Validation Agent IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validation Agent IA": {
+      "main": [
+        [
+          {
+            "node": "Sélection IA du Sujet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sélection IA du Sujet": {
+      "main": [
+        [
+          {
+            "node": "Optimisation IA Difficulté",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Optimisation IA Difficulté": {
+      "main": [
+        [
+          {
+            "node": "Génération IA Quiz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Génération IA Quiz": {
+      "main": [
+        [
+          {
+            "node": "Validation IA + Enrichissement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validation IA + Enrichissement": {
+      "main": [
+        [
+          {
+            "node": "Sauvegarde IA + Métriques",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauvegarde IA + Métriques": {
+      "main": [
+        [
+          {
+            "node": "Réponse API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null
+}

@@ -1,9 +1,11 @@
 {
   "slug": "breaking-bad",
-  "title": "Breaking Bad - L'empire chimique",
+  "title": "Breaking Bad - Niveau Intermédiaire",
   "category": "tv",
   "description": "Prouvez que vous connaissez l'histoire de Walter White. Quelques spoilers modérés inclus.",
   "difficulty": "medium",
+  "createdAt": "2025-10-01T11:00:00Z",
+  "releaseYear": 2008,
   "questions": [
     {
       "question": "Quel est le vrai prénom de Heisenberg ?",

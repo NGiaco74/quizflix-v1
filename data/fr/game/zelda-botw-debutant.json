@@ -1,0 +1,72 @@
+{
+  "slug": "zelda-botw-debutant",
+  "title": "Zelda BotW - Premiers Pas à Hyrule",
+  "category": "game",
+  "description": "Découvre Breath of the Wild avec ce quiz pour débutants. Parfait pour les nouveaux joueurs !",
+  "difficulty": "easy",
+  "createdAt": "2025-10-02T14:00:00Z",
+  "releaseYear": 2017,
+  "questions": [
+    {
+      "question": "Comment s'appelle le personnage principal ?",
+      "options": ["Zelda", "Link", "Ganon", "Daruk"],
+      "correctAnswer": 1,
+      "explanation": "Link est le héros jouable que vous incarnez dans l'aventure."
+    },
+    {
+      "question": "Sur quelle(s) console(s) le jeu est-il sorti en premier ?",
+      "options": ["Wii U seulement", "Switch seulement", "Wii U et Switch", "3DS"],
+      "correctAnswer": 2,
+      "explanation": "BotW est sorti simultanément sur Wii U et Switch le 3 mars 2017."
+    },
+    {
+      "question": "Quel est le nom de votre cheval spectral ?",
+      "options": ["Epona", "Torrent", "Roach", "Agro"],
+      "correctAnswer": 1,
+      "explanation": "Torrent est votre fidèle destrier spectral dans Breath of the Wild."
+    },
+    {
+      "question": "Comment s'appelle la tablette magique de Link ?",
+      "options": ["Module Sheikah", "Ardoise Sheikah", "Pad Sheikah", "Tablette Hylienne"],
+      "correctAnswer": 1,
+      "explanation": "L'Ardoise Sheikah (Sheikah Slate) est votre outil multifonction."
+    },
+    {
+      "question": "Combien y a-t-il de créatures divines à libérer ?",
+      "options": ["2", "4", "6", "8"],
+      "correctAnswer": 1,
+      "explanation": "Il y a 4 créatures divines : Vah Ruta, Rudania, Naboris et Medoh."
+    },
+    {
+      "question": "Quel ennemi principal devez-vous vaincre ?",
+      "options": ["Ganondorf", "Calamity Ganon", "Ganon", "Dark Link"],
+      "correctAnswer": 1,
+      "explanation": "Calamity Ganon (Fléau Ganon) est le boss final du jeu."
+    },
+    {
+      "question": "Comment s'appellent les mini-donjons du jeu ?",
+      "options": ["Temples", "Sanctuaires", "Donjons", "Cavernes"],
+      "correctAnswer": 1,
+      "explanation": "Il y a 120 sanctuaires dispersés à travers Hyrule."
+    },
+    {
+      "question": "De combien de cœurs Link dispose-t-il au début ?",
+      "options": ["3", "5", "6", "10"],
+      "correctAnswer": 0,
+      "explanation": "Link commence avec seulement 3 cœurs, ce qui rend le début difficile."
+    },
+    {
+      "question": "Quelle est la particularité des armes dans ce jeu ?",
+      "options": ["Elles sont éternelles", "Elles se cassent", "Elles se réparent", "Elles évoluent"],
+      "correctAnswer": 1,
+      "explanation": "Les armes ont une durabilité limitée et finissent par se briser."
+    },
+    {
+      "question": "En quelle année le jeu est-il sorti ?",
+      "options": ["2015", "2016", "2017", "2018"],
+      "correctAnswer": 2,
+      "explanation": "Breath of the Wild est sorti le 3 mars 2017."
+    }
+  ]
+}
+

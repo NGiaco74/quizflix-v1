@@ -1,9 +1,11 @@
 {
   "slug": "inception",
-  "title": "Inception - Le rêve dans le rêve",
+  "title": "Inception - Niveau Intermédiaire",
   "category": "movie",
   "description": "Testez vos connaissances sur le chef-d'œuvre de Christopher Nolan. Attention aux spoilers légers !",
   "difficulty": "medium",
+  "createdAt": "2025-10-01T10:00:00Z",
+  "releaseYear": 2010,
   "questions": [
     {
       "question": "Quel acteur joue le rôle de Dom Cobb, l'extracteur principal ?",

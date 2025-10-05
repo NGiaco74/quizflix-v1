@@ -1,0 +1,409 @@
+{
+  "name": "Quizzflix - Content Planning Automatique",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "value": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "id": "schedule-node",
+      "name": "Tous les jours à 9h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://quizzflix.netlify.app/api/stats",
+        "options": {
+          "timeout": 10000,
+          "retry": {
+            "enabled": true,
+            "maxAttempts": 3
+          }
+        }
+      },
+      "id": "http-request",
+      "name": "Récupérer les Stats",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "priority-check",
+              "leftValue": "={{ $json.summary.topUnfoundQueries[0].count }}",
+              "rightValue": 10,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "if-node",
+      "name": "Priorité >= 10 ?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "franchise",
+              "value": "={{ $json.summary.topUnfoundQueries[0].query }}"
+            },
+            {
+              "name": "searchCount",
+              "value": "={{ $json.summary.topUnfoundQueries[0].count }}"
+            },
+            {
+              "name": "difficulty",
+              "value": "easy"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-easy",
+      "name": "Configurer Quiz Facile",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [900, 200]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Tu es un expert en création de quiz sur les films, séries et jeux vidéo. Crée des questions engageantes et variées."
+            },
+            {
+              "role": "user",
+              "content": "Crée un quiz de 10 questions NIVEAU FACILE sur {{ $json.franchise }}. Format JSON strict:\n\n```json\n{\n  \"slug\": \"{{ $json.franchise.toLowerCase().replace(/\\s+/g, '-') }}-debutant\",\n  \"title\": \"{{ $json.franchise }} - Pour Débutants\",\n  \"category\": \"movie\",\n  \"description\": \"Teste tes connaissances de base sur {{ $json.franchise }}. Parfait pour les nouveaux fans !\",\n  \"difficulty\": \"easy\",\n  \"questions\": [\n    {\n      \"question\": \"Question ici ?\",\n      \"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],\n      \"correctAnswer\": 0,\n      \"explanation\": \"Explication claire\"\n    }\n  ]\n}\n```"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 2000
+        }
+      },
+      "id": "openai-easy",
+      "name": "Générer Quiz Facile",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.3,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "franchise",
+              "value": "={{ $json.summary.topUnfoundQueries[0].query }}"
+            },
+            {
+              "name": "searchCount",
+              "value": "={{ $json.summary.topUnfoundQueries[0].count }}"
+            },
+            {
+              "name": "difficulty",
+              "value": "medium"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-medium",
+      "name": "Configurer Quiz Moyen",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Tu es un expert en création de quiz sur les films, séries et jeux vidéo. Crée des questions engageantes et variées."
+            },
+            {
+              "role": "user",
+              "content": "Crée un quiz de 10 questions NIVEAU MOYEN sur {{ $json.franchise }}. Format JSON strict:\n\n```json\n{\n  \"slug\": \"{{ $json.franchise.toLowerCase().replace(/\\s+/g, '-') }}-intermediaire\",\n  \"title\": \"{{ $json.franchise }} - Niveau Intermédiaire\",\n  \"category\": \"movie\",\n  \"description\": \"Plonge dans les détails de {{ $json.franchise }}. Pour les vrais fans !\",\n  \"difficulty\": \"medium\",\n  \"questions\": [\n    {\n      \"question\": \"Question ici ?\",\n      \"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],\n      \"correctAnswer\": 0,\n      \"explanation\": \"Explication détaillée\"\n    }\n  ]\n}\n```"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 2000
+        }
+      },
+      "id": "openai-medium",
+      "name": "Générer Quiz Moyen",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.3,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "franchise",
+              "value": "={{ $json.summary.topUnfoundQueries[0].query }}"
+            },
+            {
+              "name": "searchCount",
+              "value": "={{ $json.summary.topUnfoundQueries[0].count }}"
+            },
+            {
+              "name": "difficulty",
+              "value": "hard"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-hard",
+      "name": "Configurer Quiz Difficile",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [900, 400]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Tu es un expert en création de quiz sur les films, séries et jeux vidéo. Crée des questions engageantes et variées."
+            },
+            {
+              "role": "user",
+              "content": "Crée un quiz de 10 questions NIVEAU DIFFICILE sur {{ $json.franchise }}. Format JSON strict:\n\n```json\n{\n  \"slug\": \"{{ $json.franchise.toLowerCase().replace(/\\s+/g, '-') }}-expert\",\n  \"title\": \"{{ $json.franchise }} - Mode Expert\",\n  \"category\": \"movie\",\n  \"description\": \"Seuls les vrais experts survivront à ce quiz ! Détails pointus et références cachées.\",\n  \"difficulty\": \"hard\",\n  \"questions\": [\n    {\n      \"question\": \"Question ici ?\",\n      \"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],\n      \"correctAnswer\": 0,\n      \"explanation\": \"Explication experte\"\n    }\n  ]\n}\n```"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 2000
+        }
+      },
+      "id": "openai-hard",
+      "name": "Générer Quiz Difficile",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.3,
+      "position": [1120, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/votre-repo/quizzflix/contents/data/fr/movie",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "token {{ $credentials.github.token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "Auto: Ajout quiz {{ $json.franchise }} facile"
+            },
+            {
+              "name": "content",
+              "value": "={{ Buffer.from(JSON.stringify($json, null, 2)).toString('base64') }}"
+            }
+          ]
+        }
+      },
+      "id": "github-deploy",
+      "name": "Déployer sur GitHub",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "message": "✅ Nouveau quiz créé : {{ $json.franchise }}\n📊 Demandes : {{ $json.searchCount }}\n🎯 Priorité : Haute\n🚀 Déployé automatiquement"
+      },
+      "id": "slack-notification",
+      "name": "Notifier Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.1,
+      "position": [1560, 300]
+    }
+  ],
+  "connections": {
+    "Tous les jours à 9h": {
+      "main": [
+        [
+          {
+            "node": "Récupérer les Stats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Récupérer les Stats": {
+      "main": [
+        [
+          {
+            "node": "Priorité >= 10 ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Priorité >= 10 ?": {
+      "main": [
+        [
+          {
+            "node": "Configurer Quiz Facile",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Configurer Quiz Moyen",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Configurer Quiz Difficile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configurer Quiz Facile": {
+      "main": [
+        [
+          {
+            "node": "Générer Quiz Facile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configurer Quiz Moyen": {
+      "main": [
+        [
+          {
+            "node": "Générer Quiz Moyen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configurer Quiz Difficile": {
+      "main": [
+        [
+          {
+            "node": "Générer Quiz Difficile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Générer Quiz Facile": {
+      "main": [
+        [
+          {
+            "node": "Déployer sur GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Générer Quiz Moyen": {
+      "main": [
+        [
+          {
+            "node": "Déployer sur GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Générer Quiz Difficile": {
+      "main": [
+        [
+          {
+            "node": "Déployer sur GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Déployer sur GitHub": {
+      "main": [
+        [
+          {
+            "node": "Notifier Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-10-05T10:30:00.000Z",
+      "updatedAt": "2025-10-05T10:30:00.000Z",
+      "id": "quizzflix",
+      "name": "Quizzflix"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-10-05T10:30:00.000Z",
+  "versionId": "1"
+}

@@ -1,0 +1,63 @@
+=== SYSTEM PROMPT (Message Système) ===
+
+Tu es un générateur de quiz expert sur les séries TV pour un public francophone. Tu produis des quiz de qualité avec différents niveaux de difficulté. Chaque quiz doit comporter exactement 10 questions, 4 choix, 1 bonne réponse et une explication courte (max 180 caractères) sans spoiler majeur. Tu réponds UNIQUEMENT en JSON valide, sans texte avant ou après.
+
+Niveaux de difficulté :
+- Facile (easy) : Questions sur les éléments visuels évidents, noms des acteurs principaux, lieux, dates, faits généraux
+- Moyen (medium) : Questions sur l'intrigue, personnages secondaires, citations, relations, événements clés
+- Difficile (hard) : Questions sur les détails subtils, easter eggs, références cachées, métadonnées de production
+
+Format JSON requis :
+{
+  "quizzes": [
+    {
+      "title": "string",
+      "category": "tv",
+      "description": "string",
+      "difficulty": "easy|medium|hard",
+      "questions": [
+        {
+          "question": "string",
+          "options": ["string", "string", "string", "string"],
+          "correctAnswer": 0-3,
+          "explanation": "string (max 180 caractères)"
+        }
+      ]
+    }
+  ]
+}
+
+
+=== USER PROMPT (Message Utilisateur) ===
+
+Génère 3 quiz complets sur la série **Stranger Things** en français avec les caractéristiques suivantes :
+
+**Quiz 1 - Facile :**
+- Titre : "Stranger Things - Découvre Hawkins"
+- Difficulté : easy
+- Description : "Teste tes connaissances de base sur Stranger Things. Parfait pour les nouveaux fans !"
+- 10 questions sur : acteurs principaux, ville de Hawkins, Eleven, nourriture préférée, lieux emblématiques, année des saisons, personnages principaux, monstres connus
+
+**Quiz 2 - Moyen :**
+- Titre : "Stranger Things - Les Mystères de l'Upside Down"
+- Difficulté : medium
+- Description : "Plonge dans les secrets de Hawkins. Pour les vrais fans de la série !"
+- 10 questions sur : Hawkins Lab, le Mind Flayer, relations entre personnages, citations mémorables, événements clés par saison, personnages secondaires, objets importants, rôle de Dungeons & Dragons
+
+**Quiz 3 - Difficile :**
+- Titre : "Stranger Things - Expert du Monde à l'Envers"
+- Difficulté : hard
+- Description : "Seuls les vrais experts survivront à ce quiz ! Détails pointus et références cachées."
+- 10 questions sur : easter eggs, références années 80, détails de production (Duffer Brothers), signification des noms, petits détails visuels, musique spécifique, numéros d'épisodes, théories confirmées, caméos
+
+**Règles strictes :**
+- Exactement 10 questions par quiz (30 questions au total)
+- Pas de spoilers majeurs de fin de saison
+- Explications <= 180 caractères
+- Questions variées et intéressantes
+- Éviter les questions trop similaires entre les 3 quiz
+- Index correctAnswer entre 0 et 3
+- Mélanger l'ordre de la bonne réponse (pas toujours en premier)
+
+Réponds UNIQUEMENT avec le JSON valide contenant les 3 quiz. Pas de texte avant ou après.
+

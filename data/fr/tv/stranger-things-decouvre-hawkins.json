@@ -1,0 +1,122 @@
+{
+  "slug": "stranger-things-decouvre-hawkins",
+  "title": "Stranger Things - Découvre Hawkins",
+  "category": "tv",
+  "description": "Teste tes connaissances de base sur Stranger Things. Parfait pour les nouveaux fans !",
+  "difficulty": "easy",
+  "createdAt": "2025-10-05T14:00:00Z",
+  "releaseYear": 2016,
+  "questions": [
+    {
+      "question": "Dans quelle ville fictive se déroule Stranger Things ?",
+      "options": [
+        "Hawkins, Indiana",
+        "Riverside, Indiana",
+        "Salem, Massachusetts",
+        "Derry, Maine"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hawkins est la petite ville de l'Indiana où tout commence."
+    },
+    {
+      "question": "Qui interprète Eleven ?",
+      "options": [
+        "Sadie Sink",
+        "Millie Bobby Brown",
+        "Natalia Dyer",
+        "Maya Hawke"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Millie Bobby Brown incarne Eleven depuis la première saison."
+    },
+    {
+      "question": "Quelle est la nourriture préférée d'Eleven ?",
+      "options": [
+        "Pizza",
+        "Glace à la vanille",
+        "Gaufres Eggo",
+        "Pancakes"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Eleven raffole des gaufres Eggo, un running gag de la série."
+    },
+    {
+      "question": "Comment s'appelle le shérif de Hawkins ?",
+      "options": [
+        "Sam Owens",
+        "Scott Clarke",
+        "Murray Bauman",
+        "Jim Hopper"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Jim Hopper est le shérif protecteur de la ville."
+    },
+    {
+      "question": "Comment les personnages appellent-ils le monde parallèle sombre ?",
+      "options": [
+        "Le Désert Noir",
+        "Le Monde à l'Envers",
+        "Le Néant",
+        "Le Verso"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Le Monde à l'Envers est la dimension parallèle inquiétante."
+    },
+    {
+      "question": "En quelle année se déroule la saison 1 ?",
+      "options": [
+        "1981",
+        "1988",
+        "1983",
+        "1985"
+      ],
+      "correctAnswer": 2,
+      "explanation": "La saison 1 se déroule en 1983, en pleine ambiance 80s."
+    },
+    {
+      "question": "Quel centre commercial emblématique apparaît dans la série ?",
+      "options": [
+        "Westview Mall",
+        "Starcourt Mall",
+        "Riverdale Mall",
+        "Forest Hills Mall"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Starcourt Mall devient un lieu phare de la série."
+    },
+    {
+      "question": "Quel monstre emblématique apparaît au début de la série ?",
+      "options": [
+        "Mind Flayer",
+        "Demodog",
+        "Vecna",
+        "Démogorgon"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Le Démogorgon est la créature emblématique de la saison 1."
+    },
+    {
+      "question": "Dans quel État américain se situe Hawkins ?",
+      "options": [
+        "Ohio",
+        "Michigan",
+        "Indiana",
+        "Illinois"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Hawkins se trouve dans l'État de l'Indiana."
+    },
+    {
+      "question": "En quelle année se déroule la saison 3 ?",
+      "options": [
+        "1987",
+        "1985",
+        "1983",
+        "1989"
+      ],
+      "correctAnswer": 1,
+      "explanation": "La saison 3 se déroule en 1985, au cœur de l'été."
+    }
+  ]
+}
+

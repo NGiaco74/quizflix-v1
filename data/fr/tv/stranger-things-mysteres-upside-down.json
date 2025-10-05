@@ -1,0 +1,122 @@
+{
+  "slug": "stranger-things-mysteres-upside-down",
+  "title": "Stranger Things - Les Mystères de l'Upside Down",
+  "category": "tv",
+  "description": "Plonge dans les secrets de Hawkins. Pour les vrais fans de la série !",
+  "difficulty": "medium",
+  "createdAt": "2025-10-05T15:00:00Z",
+  "releaseYear": 2016,
+  "questions": [
+    {
+      "question": "À quel organisme gouvernemental est rattaché le Hawkins Lab ?",
+      "options": [
+        "Département de l'Énergie (DOE)",
+        "CIA",
+        "NASA",
+        "CDC"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Le laboratoire dépend officiellement du Department of Energy."
+    },
+    {
+      "question": "Quelle caractéristique définit le Mind Flayer ?",
+      "options": [
+        "Se nourrit d'électricité",
+        "Voyage dans le temps",
+        "Est invisible à la lumière",
+        "Contrôle mental en réseau"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Il opère comme un esprit de ruche, contrôlant d'autres entités."
+    },
+    {
+      "question": "Dès la saison 2, avec qui Dustin noue-t-il une amitié inattendue ?",
+      "options": [
+        "Jonathan Byers",
+        "Billy Hargrove",
+        "Steve Harrington",
+        "Murray Bauman"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Le duo Dustin-Steve devient un tandem apprécié des fans."
+    },
+    {
+      "question": "Qui dit souvent « Les amis ne mentent pas » ?",
+      "options": [
+        "Mike Wheeler",
+        "Jim Hopper",
+        "Dustin Henderson",
+        "Eleven"
+      ],
+      "correctAnswer": 3,
+      "explanation": "« Friends don't lie » est une devise clé d'Eleven."
+    },
+    {
+      "question": "Où travaille Steve en saison 3 ?",
+      "options": [
+        "RadioShack",
+        "Le vidéoclub",
+        "Scoops Ahoy",
+        "La boutique de glaces Pop's"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Steve sert des glaces chez Scoops Ahoy au centre commercial."
+    },
+    {
+      "question": "Erica Sinclair est la sœur de quel personnage ?",
+      "options": [
+        "Lucas",
+        "Will",
+        "Mike",
+        "Dustin"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Erica est la petite sœur maligne de Lucas."
+    },
+    {
+      "question": "Quel objet permet au groupe de communiquer à distance ?",
+      "options": [
+        "Pagers",
+        "Walkie-talkies",
+        "Téléavertisseurs",
+        "Talkie-matic"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Les walkie-talkies leur servent à coordonner leurs actions."
+    },
+    {
+      "question": "Quelle arme improvisée Lucas utilise-t-il souvent ?",
+      "options": [
+        "Batte cloutée",
+        "Arc",
+        "Lance-pierre",
+        "Bâton de hockey"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Lucas emporte souvent un lance-pierre pour se défendre."
+    },
+    {
+      "question": "Quelle fête marque des événements de la saison 2 ?",
+      "options": [
+        "Thanksgiving",
+        "Halloween",
+        "Noël",
+        "Fête nationale"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Halloween sert de décor à plusieurs moments marquants."
+    },
+    {
+      "question": "Quel objet Joyce utilise-t-elle pour tenter de communiquer avec Will ?",
+      "options": [
+        "Radio CB",
+        "Télévision",
+        "Téléphone public",
+        "Guirlandes lumineuses"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Les guirlandes lumineuses deviennent un symbole de la saison 1."
+    }
+  ]
+}
+

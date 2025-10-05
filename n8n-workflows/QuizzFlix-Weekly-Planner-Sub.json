@@ -1,0 +1,187 @@
+{
+  "name": "QuizzFlix - Planificateur Hebdomadaire (Sous-workflow)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "weekly-planning",
+        "responseMode": "responseNode"
+      },
+      "id": "webhook",
+      "name": "Déclencheur Planification",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Validation des paramètres de l'Agent IA\nconst input = $input.first().json\n\nif (!input.parameters || !input.ai_strategy) {\n  throw new Error('Paramètres Agent IA manquants')\n}\n\nconst aiParams = input.parameters\nconst aiStrategy = input.ai_strategy\n\n// Adapter la stratégie selon les recommandations de l'IA\nconst adaptedParams = {\n  priority: aiParams.priority || 'high',\n  resource_allocation: aiParams.resource_allocation || 'standard',\n  ai_recommendations: aiStrategy,\n  execution_context: {\n    timestamp: new Date().toISOString(),\n    source: 'ai_agent_master',\n    strategy_id: 'weekly_planning_v1'\n  }\n}\n\nreturn [{ json: {\n  ...input,\n  adapted_params: adaptedParams,\n  ready: true\n} }]"
+      },
+      "id": "ai_validation",
+      "name": "Validation Agent IA",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Tu es un expert en tendances cinématographiques et télévisuelles. Tu analyses les données TMDb pour créer des plans de quizz optimisés. Tu prends en compte les recommandations de l'Agent IA Maître pour adapter ta stratégie."
+            },
+            {
+              "role": "user",
+              "content": "=Analyse les tendances TMDb et crée un plan hebdomadaire optimisé selon ces recommandations IA :\n{{ $json.adapted_params.ai_recommendations }}\n\nPriorité: {{ $json.adapted_params.priority }}\nAllocation ressources: {{ $json.adapted_params.resource_allocation }}\n\nCrée un plan intelligent qui :\n1. Équilibre les genres (films/séries)\n2. Varie les niveaux de difficulté\n3. Optimise l'engagement utilisateur\n4. S'adapte aux tendances actuelles\n\nRéponds en JSON avec cette structure :\n{\n  \"weekly_plan\": {\n    \"created_at\": \"timestamp\",\n    \"week_start\": \"date\",\n    \"ai_optimization\": \"description\",\n    \"topics\": [\n      {\n        \"dayOfWeek\": 0,\n        \"title\": \"titre\",\n        \"id\": \"tmdb_id\",\n        \"media_type\": \"movie|tv\",\n        \"ai_score\": 0.95,\n        \"difficulty_distribution\": {\"easy\": 4, \"medium\": 3, \"hard\": 3},\n        \"engagement_prediction\": \"high|medium|low\",\n        \"trending_reason\": \"pourquoi c'est tendance\"\n      }\n    ]\n  }\n}"
+            }
+          ]
+        }
+      },
+      "id": "ai_planning",
+      "name": "IA - Planification Intelligente",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.themoviedb.org/3/trending/all/day",
+        "method": "GET",
+        "queryParameters": {
+          "api_key": "={{ $env.TMDB_API_KEY }}",
+          "language": "fr-FR"
+        }
+      },
+      "id": "fetch_trending",
+      "name": "Récupérer Données TMDb",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Fusion intelligente : Plan IA + Données TMDb\nconst aiPlan = JSON.parse($input.first().json)\nconst tmdbData = $input.first().json.results || []\n\n// Créer un mapping intelligent entre le plan IA et les données réelles\nconst enhancedPlan = {\n  ...aiPlan.weekly_plan,\n  data_source: 'ai_enhanced_tmdb',\n  validation_timestamp: new Date().toISOString(),\n  topics: aiPlan.weekly_plan.topics.map(plannedTopic => {\n    // Trouver la correspondance dans les données TMDb\n    const matchingData = tmdbData.find(item => \n      item.id.toString() === plannedTopic.id ||\n      (item.title || item.name) === plannedTopic.title\n    )\n    \n    return {\n      ...plannedTopic,\n      tmdb_data: matchingData || null,\n      data_confidence: matchingData ? 0.95 : 0.7,\n      fallback_available: !!matchingData\n    }\n  })\n}\n\nreturn [{ json: enhancedPlan }]"
+      },
+      "id": "data_fusion",
+      "name": "Fusion Données IA + TMDb",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Sauvegarde intelligente avec métriques IA\nconst plan = $input.first().json\n\n// Créer le répertoire s'il n'existe pas\nconst fs = require('fs')\nconst path = require('path')\nconst dataDir = '/tmp/quizflix_data'\n\nif (!fs.existsSync(dataDir)) {\n  fs.mkdirSync(dataDir, { recursive: true })\n}\n\n// Sauvegarder le plan avec métriques IA\nconst filePath = path.join(dataDir, 'quiz_plan_ai_enhanced.json')\nfs.writeFileSync(filePath, JSON.stringify(plan, null, 2))\n\n// Créer un rapport de performance\nconst performanceReport = {\n  plan_id: plan.created_at,\n  ai_optimization_score: plan.topics.reduce((sum, topic) => sum + topic.ai_score, 0) / plan.topics.length,\n  data_confidence: plan.topics.reduce((sum, topic) => sum + topic.data_confidence, 0) / plan.topics.length,\n  engagement_prediction: plan.topics.filter(topic => topic.engagement_prediction === 'high').length,\n  generated_at: new Date().toISOString()\n}\n\nconst reportPath = path.join(dataDir, 'performance_report.json')\nfs.writeFileSync(reportPath, JSON.stringify(performanceReport, null, 2))\n\nreturn [{ json: {\n  success: true,\n  file_path: filePath,\n  report_path: reportPath,\n  plan_id: plan.created_at,\n  ai_score: performanceReport.ai_optimization_score,\n  topics_count: plan.topics.length,\n  performance_report: performanceReport\n} }]"
+      },
+      "id": "ai_save",
+      "name": "Sauvegarde IA + Métriques",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "id": "response",
+      "name": "Réponse API",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Déclencheur Planification": {
+      "main": [
+        [
+          {
+            "node": "Validation Agent IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validation Agent IA": {
+      "main": [
+        [
+          {
+            "node": "IA - Planification Intelligente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA - Planification Intelligente": {
+      "main": [
+        [
+          {
+            "node": "Récupérer Données TMDb",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Récupérer Données TMDb": {
+      "main": [
+        [
+          {
+            "node": "Fusion Données IA + TMDb",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fusion Données IA + TMDb": {
+      "main": [
+        [
+          {
+            "node": "Sauvegarde IA + Métriques",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauvegarde IA + Métriques": {
+      "main": [
+        [
+          {
+            "node": "Réponse API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null
+}

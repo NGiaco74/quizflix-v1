@@ -21,6 +21,7 @@ export default function Quiz({ quiz, locale }: QuizProps) {
   const [showFeedback, setShowFeedback] = useState(false);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
+  const [scoreAnimation, setScoreAnimation] = useState(false);
 
   const question = quiz.questions[currentQuestion];
   const isLastQuestion = currentQuestion === quiz.questions.length - 1;
@@ -34,6 +35,9 @@ export default function Quiz({ quiz, locale }: QuizProps) {
     const isCorrect = index === question.correctAnswer;
     if (isCorrect) {
       setScore((prev) => prev + 1);
+      // Déclencher l'animation
+      setScoreAnimation(true);
+      setTimeout(() => setScoreAnimation(false), 500);
     }
     
     setAnswers((prev) => [...prev, index]);
@@ -41,8 +45,8 @@ export default function Quiz({ quiz, locale }: QuizProps) {
 
   const handleNext = () => {
     if (isLastQuestion) {
-      // Navigate to result page with score in URL
-      router.push(`/${locale}/result/${quiz.slug}?score=${score + (selectedAnswer === question.correctAnswer ? 1 : 0)}`);
+      // Use the current score state (already correctly calculated)
+      router.push(`/${locale}/result/${quiz.slug}?score=${score}`);
     } else {
       setCurrentQuestion((prev) => prev + 1);
       setSelectedAnswer(null);
@@ -52,8 +56,26 @@ export default function Quiz({ quiz, locale }: QuizProps) {
 
   return (
     <div className="w-full max-w-3xl mx-auto">
-      <div className="mb-8">
+      <div className="mb-8 space-y-4">
         <ProgressBar current={currentQuestion + 1} total={quiz.questions.length} />
+        
+        {/* Score en temps réel */}
+        <div className="flex items-center justify-between text-sm">
+          <div className="flex items-center gap-2">
+            <span className="text-white/70">Score actuel :</span>
+            <span 
+              className={`text-2xl font-bold text-secondary transition-all duration-300 ${
+                scoreAnimation ? 'scale-125 text-green-400' : 'scale-100'
+              }`}
+            >
+              {score}
+            </span>
+            <span className="text-white/50">/ {currentQuestion}</span>
+          </div>
+          <div className="text-white/50 font-medium">
+            {currentQuestion > 0 && `${Math.round((score / currentQuestion) * 100)}%`}
+          </div>
+        </div>
       </div>
 
       <div className="card">

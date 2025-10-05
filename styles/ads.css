@@ -1,0 +1,63 @@
+/* Styles pour les emplacements publicitaires */
+
+.ad-skeleton {
+  background: #0b0b0d;
+  border-radius: 0.75rem;
+}
+
+.ad-box {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.ad-box ins {
+  width: 100%;
+  min-height: inherit;
+  display: block;
+}
+
+/* Sticky ad - toujours en bas */
+.ad-box[id*="sticky"] {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(11, 11, 13, 0.95);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+  padding: 0.5rem;
+}
+
+/* Top ad - au-dessus du contenu */
+.ad-box[id*="top"] {
+  margin: 0 auto 1.5rem;
+  max-width: 728px;
+}
+
+/* Mid ad - entre le contenu */
+.ad-box[id*="mid"] {
+  margin: 2rem auto;
+  max-width: 300px;
+}
+
+@media (min-width: 768px) {
+  .ad-box[id*="mid"] {
+    max-width: 336px;
+  }
+}
+
+/* Animation de chargement */
+.ad-skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+

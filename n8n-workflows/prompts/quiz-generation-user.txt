@@ -1,0 +1,13 @@
+Sujet: {title} (ID: {id}, type: {media_type}). 
+Niveau: {difficulty}. 
+Langue: fr. 
+
+Génère un quizz conforme aux exigences :
+- {target_questions} questions
+- 4 choix par question
+- 1 réponse correcte
+- Une explication courte (<=180 caractères)
+- Sans spoiler majeur
+- Mélange les difficultés selon le niveau demandé
+
+Réponds uniquement en JSON valide selon le schéma QuizzFlix.

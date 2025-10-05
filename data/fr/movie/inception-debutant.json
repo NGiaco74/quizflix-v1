@@ -1,0 +1,72 @@
+{
+  "slug": "inception-debutant",
+  "title": "Inception - Pour Débutants",
+  "category": "movie",
+  "description": "Découvre l'univers d'Inception avec ce quiz facile. Parfait pour les nouveaux spectateurs !",
+  "difficulty": "easy",
+  "createdAt": "2025-10-02T10:00:00Z",
+  "releaseYear": 2010,
+  "questions": [
+    {
+      "question": "Qui a réalisé le film Inception ?",
+      "options": ["Christopher Nolan", "Steven Spielberg", "James Cameron", "Martin Scorsese"],
+      "correctAnswer": 0,
+      "explanation": "Christopher Nolan est le réalisateur de ce chef-d'œuvre de science-fiction sorti en 2010."
+    },
+    {
+      "question": "Comment s'appelle le personnage principal joué par Leonardo DiCaprio ?",
+      "options": ["Dom Cobb", "Arthur", "Eames", "Robert Fischer"],
+      "correctAnswer": 0,
+      "explanation": "Dom Cobb est l'extracteur principal qui pénètre dans les rêves des autres."
+    },
+    {
+      "question": "En quelle année le film Inception est-il sorti ?",
+      "options": ["2008", "2010", "2012", "2014"],
+      "correctAnswer": 1,
+      "explanation": "Inception est sorti en juillet 2010 et a été un immense succès au box-office."
+    },
+    {
+      "question": "Quel est le métier de Dom Cobb dans le film ?",
+      "options": ["Voleur de rêves", "Détective", "Architecte", "Médecin"],
+      "correctAnswer": 0,
+      "explanation": "Cobb est un extracteur, spécialisé dans le vol d'informations dans les rêves."
+    },
+    {
+      "question": "Comment Cobb vérifie-t-il s'il est dans la réalité ou un rêve ?",
+      "options": ["Il regarde sa montre", "Il fait tourner une toupie", "Il se pince", "Il regarde ses mains"],
+      "correctAnswer": 1,
+      "explanation": "La toupie est le totem de Cobb, héritée de sa femme Mal."
+    },
+    {
+      "question": "Quel acteur joue le rôle d'Arthur, le bras droit de Cobb ?",
+      "options": ["Tom Hardy", "Joseph Gordon-Levitt", "Michael Caine", "Cillian Murphy"],
+      "correctAnswer": 1,
+      "explanation": "Joseph Gordon-Levitt incarne Arthur, le point man de l'équipe."
+    },
+    {
+      "question": "Dans combien de niveaux de rêves différents l'équipe peut-elle aller ?",
+      "options": ["1 niveau", "2 niveaux", "3 niveaux", "Plusieurs niveaux"],
+      "correctAnswer": 3,
+      "explanation": "L'équipe peut descendre dans plusieurs niveaux de rêves imbriqués."
+    },
+    {
+      "question": "Quel est le nom de la femme de Cobb qui apparaît dans ses rêves ?",
+      "options": ["Mal", "Ariadne", "Eames", "Miranda"],
+      "correctAnswer": 0,
+      "explanation": "Mal, jouée par Marion Cotillard, hante les rêves de Cobb."
+    },
+    {
+      "question": "Quelle est la mission principale de l'équipe dans le film ?",
+      "options": ["Voler de l'argent", "Sauver quelqu'un", "Implanter une idée", "Détruire un bâtiment"],
+      "correctAnswer": 2,
+      "explanation": "L'équipe doit réaliser une inception : implanter une idée dans l'esprit de Fischer."
+    },
+    {
+      "question": "Combien d'Oscars le film a-t-il remportés ?",
+      "options": ["2", "4", "6", "8"],
+      "correctAnswer": 1,
+      "explanation": "Inception a remporté 4 Oscars sur 8 nominations, dont Meilleure photographie."
+    }
+  ]
+}
+
