@@ -4,13 +4,8 @@ import {notFound} from 'next/navigation';
 const SUPPORTED_LOCALES = ['fr', 'en'] as const;
 type SupportedLocale = typeof SUPPORTED_LOCALES[number];
 
-export default getRequestConfig(async ({requestLocale}) => {
-  const resolved = (await requestLocale()) || 'fr';
-  const locale = (SUPPORTED_LOCALES.includes(resolved as SupportedLocale)
-    ? resolved
-    : 'fr') as SupportedLocale;
-
-  if (!SUPPORTED_LOCALES.includes(locale)) {
+export default getRequestConfig(async ({locale}) => {
+  if (!locale || !SUPPORTED_LOCALES.includes(locale as SupportedLocale)) {
     notFound();
   }
 

@@ -10,7 +10,7 @@ export default function Header({ locale }: HeaderProps) {
   const t = useTranslations('header');
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-dark/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-dark backdrop-blur-md">
       <div className="w-full max-w-7xl mx-auto px-4">
         <div className="flex h-16 items-center justify-between gap-2">
           <Link 
