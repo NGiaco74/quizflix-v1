@@ -20,10 +20,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ 
   params: { locale, slug },
-  searchParams,
 }: { 
   params: { locale: Locale; slug: string };
-  searchParams: { score?: string };
 }) {
   const quiz = getQuizBySlug(locale, slug);
   const t = await getTranslations({ locale, namespace: 'result' });
@@ -32,8 +30,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const score = searchParams.score ? parseInt(searchParams.score, 10) : 0;
-  const ogImageUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/og?title=${encodeURIComponent(quiz.title)}&score=${score}&total=${quiz.questions.length}`;
+  const ogImageUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/og?title=${encodeURIComponent(quiz.title)}&score=0&total=${quiz.questions.length}`;
 
   return generateSEO({
     title: `${t('title')} - ${quiz.title}`,
