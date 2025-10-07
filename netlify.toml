@@ -6,13 +6,8 @@
   package = "@netlify/plugin-nextjs"
 
 [build.environment]
+  NODE_VERSION = "20"
   NEXT_PUBLIC_BASE_URL = "https://votre-site.netlify.app"
-
-# Redirections pour Next.js
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 # Headers de sécurité
 [[headers]]
