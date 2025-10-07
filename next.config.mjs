@@ -1,15 +1,12 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  // Utiliser le runtime Next.js (SSR/ISR) géré par Netlify Runtime
-  images: {
-    formats: ['image/webp'],
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+const baseConfig = {
+  images: { formats: ['image/webp'] },
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
 };
 
-export default nextConfig;
+export default withNextIntl(baseConfig);
