@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/lib/i18n';
 import Header from '@/components/Header';
@@ -23,13 +23,12 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  setRequestLocale(locale);
-  const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
+  const messages = await getMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider messages={messages}>
           <Header locale={locale} />
           <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-6 md:py-8">
             {children}
