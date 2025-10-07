@@ -18,6 +18,8 @@ export async function generateStaticParams() {
   return params;
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ 
   params: { locale, slug } 
 }: { 
