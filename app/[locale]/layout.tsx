@@ -29,7 +29,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <Header locale={locale} />
           <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-6 md:py-8">
             {children}
