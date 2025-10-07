@@ -8,14 +8,14 @@ export default function NotFound() {
           <h1 className="text-6xl font-bold text-accent">404</h1>
           <h2 className="text-2xl font-semibold">Page non trouvée</h2>
           <p className="text-white/70 max-w-md mx-auto">
-            La page que vous recherchez n'existe pas ou a été déplacée.
+            La page que vous recherchez n&apos;existe pas ou a été déplacée.
           </p>
           <div className="pt-4">
             <Link 
               href="/fr"
               className="inline-block bg-accent text-white px-6 py-3 rounded-xl font-semibold hover:bg-accent/90 transition-colors"
             >
-              Retour à l'accueil
+              Retour à l&apos;accueil
             </Link>
           </div>
         </div>

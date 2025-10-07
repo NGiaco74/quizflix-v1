@@ -11,7 +11,7 @@ interface ShareButtonsProps {
   locale: string;
 }
 
-export default function ShareButtons({ title, score, total, locale }: ShareButtonsProps) {
+export default function ShareButtons({ title, score, total, locale: _locale }: ShareButtonsProps) {
   const t = useTranslations('share');
   const [copied, setCopied] = useState(false);
 
@@ -26,9 +26,9 @@ export default function ShareButtons({ title, score, total, locale }: ShareButto
           text: shareText,
           url: shareUrl,
         });
-      } catch (error) {
-        console.log('Share cancelled');
-      }
+    } catch {
+      console.log('Share cancelled');
+    }
     } else {
       handleCopyLink();
     }
@@ -39,8 +39,8 @@ export default function ShareButtons({ title, score, total, locale }: ShareButto
       await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
-      console.error('Failed to copy:', error);
+    } catch {
+      console.error('Failed to copy');
     }
   };
 

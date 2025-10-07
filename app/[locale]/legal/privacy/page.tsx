@@ -14,7 +14,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   });
 }
 
-export default function PrivacyPage({ params: { locale } }: { params: { locale: Locale } }) {
+export default function PrivacyPage({ params: { locale: _locale } }: { params: { locale: Locale } }) {
   const t = useTranslations('legal.privacy');
 
   return (

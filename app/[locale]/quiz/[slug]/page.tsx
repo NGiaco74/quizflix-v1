@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
 import { getAllQuizzes, getQuizBySlug } from '@/lib/quiz';
 import { generateSEO } from '@/lib/seo';
 import Quiz from '@/components/Quiz';

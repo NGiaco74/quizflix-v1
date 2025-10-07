@@ -2,24 +2,38 @@
   command = "npm run build"
   publish = ".next"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
 [build.environment]
-  NEXT_PUBLIC_BASE_URL = "https://votre-site.netlify.app"
+  NODE_VERSION = "18"
 
-# Redirections pour Next.js
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-# Headers de sécurité
 [[headers]]
   for = "/*"
   [headers.values]
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
 
+[[redirects]]
+  from = "/"
+  to = "/fr"
+  status = 302
+
+[[redirects]]
+  from = "/quiz/*"
+  to = "/fr/quiz/:splat"
+  status = 302
+
+[[redirects]]
+  from = "/result/*"
+  to = "/fr/result/:splat"
+  status = 302
+
+[[redirects]]
+  from = "/jeux-video"
+  to = "/fr/jeux-video"
+  status = 302
+
+[[redirects]]
+  from = "/games"
+  to = "/en/games"
+  status = 302

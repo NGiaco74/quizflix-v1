@@ -20,7 +20,7 @@ export default function Quiz({ quiz, locale }: QuizProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [score, setScore] = useState(0);
-  const [answers, setAnswers] = useState<number[]>([]);
+  const [, setAnswers] = useState<number[]>([]);
   const [scoreAnimation, setScoreAnimation] = useState(false);
 
   const question = quiz.questions[currentQuestion];
