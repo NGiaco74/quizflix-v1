@@ -18,7 +18,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
 
 export async function generateMetadata({ 
   params: { locale, slug },

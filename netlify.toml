@@ -4,7 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NEXT_PUBLIC_BASE_URL = "https://votre-site.netlify.app"
+  NEXT_PUBLIC_BASE_URL = "https://quizzflix.netlify.app"
 
 # Headers de sécurité
 [[headers]]
