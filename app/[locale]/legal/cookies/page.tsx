@@ -1,9 +1,10 @@
 import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 import type { Locale } from '@/lib/i18n';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }) {
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'legal.cookies' });
   
   return generateSEO({
@@ -14,7 +15,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   });
 }
 
-export default function CookiesPage({ params: { locale: _locale } }: { params: { locale: Locale } }) {
+export default function CookiesPage({ params: { locale } }: { params: { locale: Locale } }) {
+  setRequestLocale(locale);
   const t = useTranslations('legal.cookies');
 
   return (

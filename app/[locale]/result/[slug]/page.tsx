@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getAllQuizzes, getQuizBySlug, calculateResult } from '@/lib/quiz';
 import { generateSEO } from '@/lib/seo';
 import ResultCard from '@/components/ResultCard';
@@ -25,6 +25,7 @@ export async function generateMetadata({
 }: { 
   params: { locale: Locale; slug: string };
 }) {
+  setRequestLocale(locale);
   const quiz = getQuizBySlug(locale, slug);
   const t = await getTranslations({ locale, namespace: 'result' });
   
@@ -50,6 +51,7 @@ export default function ResultPage({
   params: { locale: Locale; slug: string };
   searchParams: { score?: string };
 }) {
+  setRequestLocale(locale);
   const quiz = getQuizBySlug(locale, slug);
 
   if (!quiz) {

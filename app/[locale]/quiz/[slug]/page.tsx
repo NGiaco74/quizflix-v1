@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
 import { getAllQuizzes, getQuizBySlug } from '@/lib/quiz';
 import { generateSEO } from '@/lib/seo';
 import Quiz from '@/components/Quiz';
@@ -25,6 +26,7 @@ export async function generateMetadata({
 }: { 
   params: { locale: Locale; slug: string } 
 }) {
+  setRequestLocale(locale);
   const quiz = getQuizBySlug(locale, slug);
   
   if (!quiz) {
@@ -44,6 +46,7 @@ export default function QuizPage({
 }: { 
   params: { locale: Locale; slug: string } 
 }) {
+  setRequestLocale(locale);
   const quiz = getQuizBySlug(locale, slug);
 
   if (!quiz) {

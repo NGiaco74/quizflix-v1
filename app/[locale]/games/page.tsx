@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 import { getQuizzesByCategory } from '@/lib/quiz';
 import { generateSEO } from '@/lib/seo';
@@ -7,6 +7,7 @@ import QuizCard from '@/components/QuizCard';
 import type { Locale } from '@/lib/i18n';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }) {
+  setRequestLocale(locale);
   if (locale !== 'en') {
     return {};
   }
@@ -22,6 +23,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default function GamesPage({ params: { locale } }: { params: { locale: Locale } }) {
+  setRequestLocale(locale);
+  
   if (locale !== 'en') {
     redirect(`/${locale}/jeux-video`);
   }
